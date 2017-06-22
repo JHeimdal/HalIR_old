@@ -159,3 +159,8 @@ Molparm Hitran::create_molparm(const int *molecules,const int *nmolec,const doub
       data.hline.push_back(getEmptyHitranLine());
       return data;
 }
+bool Hitran::save_molparm(const Molparm &data)
+{
+	cout << "Saving Molparm" << endl;
+	return true;
+}

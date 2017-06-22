@@ -68,8 +68,8 @@ inline double voigt(const double v,const double y) {
 		    U=NBY2[j]/(UU*UU+VV*VV);
 		    UU=y+U*UU;
 		    VV=x-U*VV;
-	    } 
-	    return UU/(UU*UU+VV*VV)/1,772454;
+	    }
+	    return UU/(UU*UU+VV*VV)/1.772454;
 	    break;
 	  case 3:
         y2=y*y;

@@ -93,7 +93,7 @@ HalIRSpec::HalIRSpec(std::string &infile)
     method= 0;
     fov   = 0;
 
-
+    /* Check for a lines files */
     int off=0;int c=0;
     for( int v : nmolec ) {
       int *m = new int[v];
@@ -103,7 +103,8 @@ HalIRSpec::HalIRSpec(std::string &infile)
       mparm.push_back(hitran.create_molparm(m,&v,&cc,&low,&high));
       delete [] m;
       c++;
-    }    
+    }
+    hitran.save_molparm(mparm[0]);
 }
 HalIRSpec::~HalIRSpec()
 {

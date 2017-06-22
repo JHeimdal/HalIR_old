@@ -10,6 +10,8 @@ HalIR::HalIR(const HalIRSpec &spec) : HalIRSpec(spec)
   Temp=getTemp();
   Press=getPress();
   PathL=getPathl();
+  simulate=isSimulation();
+  if ( simulate ) { cout << "This is a simulation" << endl;}
 }
 
 void HalIR::setupRun()
@@ -31,7 +33,7 @@ void HalIR::setupRun()
       alphaL[i]=( (1.-q)*m.hline[i].air_B+q*m.hline[i].self_B )*Press*pow( (296/Temp),m.hline[i].temp_air_B );
     }
     /* Test of computation will change structure */
-    bool end=false;
+    //bool end=false;
     for(int mm=0;mm<msize;mm++) {
       double yy=alphaL[mm]/alphaD[mm];
       for(int i=0;i<mu.size();i++) {

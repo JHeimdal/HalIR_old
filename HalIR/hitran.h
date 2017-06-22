@@ -53,6 +53,7 @@ class Hitran
     char *par_path;
     char *dat_path;
     int nentries;
+    //std::fstream iofile;
 
     struct HitranDat {
 	    std::map<int,std::string> molec_map; // Molecular map int->name
@@ -156,6 +157,7 @@ class Hitran
     Hitran();
     Hitran(bool verbose);
     Molparm create_molparm(const int *molec,const int *nmolec,const double *conc,const double *low,const double *high);
+    bool save_molparm(const Molparm &data);
     std::vector<int> GetNisotp(std::string &molec);
     std::vector<int> GetMolecN(std::string &molec);
     int GetMolecN(int isotp);

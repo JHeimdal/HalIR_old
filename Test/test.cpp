@@ -59,11 +59,11 @@ int main(int argc,char **argv)
                  << "# isotp is the isotopic composistion 0 for natural abundance otherwise use the 3 digit code from hitran.par (column 5)\n"
                  << "# conc concentration\n"
                  << "# uconc unit on the conectration\n"
-                 << "molec:  CO2 H2O CO\n"
-                 << "isotp:  0 181  0\n"
-                 << "conc:   0.01 1.2 2\n"
-                 << "uconc:  atm mb  ppm\n"
-                 << "files: test.spc\n";
+                 << "molec:  H2O CO\n"
+                 << "isotp:  181  0\n"
+                 << "conc:   1.2 2\n"
+                 << "uconc:  mb  ppm\n"
+                 << "files:\n";
         } else if (arg->compare(0,1,"-")==0 ) {
             cerr << "Error: command: " << *arg << " does not exist" << endl;
             return 99;

@@ -26,6 +26,7 @@ class HalIR : public HalIRSpec
     //static const double kb=1.3806503E-23; // J/K
     //static const double atmmass=1.6605E-27; // kg
     const double Na=6.022E23;
+    bool simulate;
     bool verbose;
     // Armadillo init
     arma::vec alphaL;

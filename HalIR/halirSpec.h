@@ -14,7 +14,7 @@ class HalIRSpec
 private:
     template <typename T>
     void vprint(const std::vector<T> &vec) {
-        for( T v : vec) 
+        for( T v : vec)
             std::cout << v << " ";
         std::cout << std::endl;
     }
@@ -42,7 +42,7 @@ private:
     double C2K(double c_val) { return c_val+273.15; } // Converts Celsius to Kelvin
     double F2K(double f_val) { return (f_val-32)*5/9+273.15; } // Converts Fahrenheit to Kelvin ( never put this in documentation )
     /* End of constants */
-   
+
     /* Data used for simulation     */
     std::string upress;
     std::string utemp;
@@ -107,5 +107,8 @@ public:
     }
     double getPathl() {
       return pathl;
+    }
+    bool isSimulation() {
+      return simulate;
     }
 };
