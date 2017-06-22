@@ -1,0 +1,14 @@
+
+aaaaa ICON "Bitmaps/halir.ico"
+halir ICON "Bitmaps/halir.ico"
+
+new BITMAP "Bitmaps/new.bmp"
+open BITMAP "Bitmaps/open.bmp"
+save BITMAP "Bitmaps/save.bmp"
+print BITMAP "Bitmaps/print.bmp"
+sim BITMAP "Bitmaps/sim.bmp"
+fit BITMAP "Bitmaps/fit.bmp"
+mfit BITMAP "Bitmaps/mfit.bmp"
+stack BITMAP "Bitmaps/stack.bmp"
+cut BITMAP "Bitmaps/cut.bmp"
+

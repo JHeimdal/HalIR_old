@@ -1,0 +1,478 @@
+In file included from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:9:0,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/home/jimmy/Programs/HalIR/Test/../HalIR/hitran.h: In member function ‘void Hitran::vprint(const std::vector<T>&)’:
+/home/jimmy/Programs/HalIR/Test/../HalIR/hitran.h:48:20: error: range-based ‘for’ loops are not allowed in C++98 mode
+         for( T v : vec) 
+                    ^
+In file included from /home/jimmy/Programs/HalIR/Test/test.cpp:5:0:
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h: At global scope:
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:22:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double m2cm       =1e2;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:23:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double dm2cm      =1e1;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:24:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double km2cm      =1e5;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:25:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double bar2atm    =0.986923266716;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:26:38: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double mb2atm     =bar2atm*1e-3;
+                                      ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:27:38: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double pa2atm     =bar2atm*1e-5;
+                                      ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:28:38: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double kpa2atm    =bar2atm*1e-2;
+                                      ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:29:38: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double hpa2atm    =bar2atm*1e-3;
+                                      ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:30:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double pp2Nden    =1.0; // partial pressure to number density
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:31:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double torr2atm   =0.001315789473684;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:32:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double kb_si      =1.3806503E-23;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:33:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double kb_erg     =1.3806503E-16;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:34:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double c          =299792458;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:35:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double pi         =3.141592653589793;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:36:33: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double pi_sq      =pi*pi;
+                                 ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:37:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double hc_erg     =1.986445121E-16;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:38:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double c_sq_erg   =8.987551787E20;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:39:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double atm2g      =1.6605E-24;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:40:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double Na         =6.022E23;
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:41:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double c_2        =1.4388; // cmK
+                              ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h: In member function ‘void HalIRSpec::vprint(const std::vector<T>&)’:
+/home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:17:20: error: range-based ‘for’ loops are not allowed in C++98 mode
+         for( T v : vec) 
+                    ^
+In file included from /home/jimmy/Programs/HalIR/Test/test.cpp:6:0:
+/home/jimmy/Programs/HalIR/Test/../HalIR/halir.h: At global scope:
+/home/jimmy/Programs/HalIR/Test/../HalIR/halir.h:47:21: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double pi=3.14159265358979;
+                     ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halir.h:48:21: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double hc=1.98644521E-16; // erg*cm
+                     ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halir.h:49:23: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double c_sq=8.987551787E20; // cm^2*s^-2
+                       ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halir.h:50:21: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double kb=1.3806503E-16; // erg/K
+                     ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halir.h:51:26: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double atmmass=1.6605E-24; // g
+                          ^
+/home/jimmy/Programs/HalIR/Test/../HalIR/halir.h:56:21: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11 [enabled by default]
+     const double Na=6.022E23;
+                     ^
+/home/jimmy/Programs/HalIR/Test/test.cpp: In function ‘int main(int, char**)’:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:15: error: ‘arg’ does not name a type
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+               ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:32: error: expected ‘;’ before ‘arg’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:35: error: no match for ‘operator!=’ (operand types are ‘<unresolved overloaded function type>’ and ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’)
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                   ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:35: note: candidates are:
+In file included from /usr/include/c++/4.8.2/iosfwd:40:0,
+                 from /usr/include/c++/4.8.2/ios:38,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/postypes.h:221:5: note: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^
+/usr/include/c++/4.8.2/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::fpos<_StateT>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_pair.h:227:5: note: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^
+/usr/include/c++/4.8.2/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::pair<_T1, _T2>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:303:5: note: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator!=(const reverse_iterator<_Iterator>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:303:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:353:5: note: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator!=(const reverse_iterator<_IteratorL>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:353:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::reverse_iterator<_IteratorR>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/string:41:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/allocator.h:138:5: note: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator!=(const allocator<_T1>&, const allocator<_T2>&)
+     ^
+/usr/include/c++/4.8.2/bits/allocator.h:138:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::allocator<_T2>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/string:41:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/allocator.h:143:5: note: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^
+/usr/include/c++/4.8.2/bits/allocator.h:143:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::allocator<_CharT>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2532:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2532:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2544:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const _CharT* __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2544:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2556:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2556:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   mismatched types ‘const _CharT*’ and ‘__gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/4.8.2/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.8.2/ios:44,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/streambuf_iterator.h:210:5: note: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^
+/usr/include/c++/4.8.2/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/vector:64:0,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:3:
+/usr/include/c++/4.8.2/bits/stl_vector.h:1428:5: note: template<class _Tp, class _Alloc> bool std::operator!=(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)
+     operator!=(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)
+     ^
+/usr/include/c++/4.8.2/bits/stl_vector.h:1428:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::vector<_Tp, _Alloc>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/map:60:0,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_tree.h:316:5: note: template<class _Val> bool std::operator!=(const std::_Rb_tree_iterator<_Tp>&, const std::_Rb_tree_const_iterator<_Val>&)
+     operator!=(const _Rb_tree_iterator<_Val>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_tree.h:316:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::_Rb_tree_const_iterator<_Val>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/map:60:0,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_tree.h:927:5: note: template<class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc> bool std::operator!=(const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)
+     operator!=(const _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_tree.h:927:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/map:61:0,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_map.h:986:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::map<_Key, _Tp, _Compare, _Alloc>&, const std::map<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const map<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_map.h:986:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::map<_Key, _Tp, _Compare, _Alloc>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/map:62:0,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_multimap.h:888:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::multimap<_Key, _Tp, _Compare, _Alloc>&, const std::multimap<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const multimap<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_multimap.h:888:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::multimap<_Key, _Tp, _Compare, _Alloc>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/list:63:0,
+                 from /usr/local/include/boost/filesystem/path_traits.hpp:27,
+                 from /usr/local/include/boost/filesystem/path.hpp:25,
+                 from /usr/local/include/boost/filesystem.hpp:16,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/spectra.h:4,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/specsac.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:10,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_list.h:282:5: note: template<class _Val> bool std::operator!=(const std::_List_iterator<_Tp>&, const std::_List_const_iterator<_Val>&)
+     operator!=(const _List_iterator<_Val>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_list.h:282:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::_List_const_iterator<_Val>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/list:63:0,
+                 from /usr/local/include/boost/filesystem/path_traits.hpp:27,
+                 from /usr/local/include/boost/filesystem/path.hpp:25,
+                 from /usr/local/include/boost/filesystem.hpp:16,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/spectra.h:4,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/specsac.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:10,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_list.h:1638:5: note: template<class _Tp, class _Alloc> bool std::operator!=(const std::list<_Tp, _Alloc>&, const std::list<_Tp, _Alloc>&)
+     operator!=(const list<_Tp, _Alloc>& __x, const list<_Tp, _Alloc>& __y)
+     ^
+/usr/include/c++/4.8.2/bits/stl_list.h:1638:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::list<_Tp, _Alloc>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/iterator:66:0,
+                 from /usr/local/include/boost/filesystem/path_traits.hpp:28,
+                 from /usr/local/include/boost/filesystem/path.hpp:25,
+                 from /usr/local/include/boost/filesystem.hpp:16,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/spectra.h:4,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/specsac.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:10,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stream_iterator.h:137:5: note: template<class _Tp, class _CharT, class _Traits, class _Dist> bool std::operator!=(const std::istream_iterator<_Tp, _CharT, _Traits, _Dist>&, const std::istream_iterator<_Tp, _CharT, _Traits, _Dist>&)
+     operator!=(const istream_iterator<_Tp, _CharT, _Traits, _Dist>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stream_iterator.h:137:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::istream_iterator<_Tp, _CharT, _Traits, _Dist>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/deque:64:0,
+                 from /usr/include/c++/4.8.2/stack:60,
+                 from /usr/local/include/boost/filesystem/operations.hpp:42,
+                 from /usr/local/include/boost/filesystem.hpp:17,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/spectra.h:4,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/specsac.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:10,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_deque.h:260:5: note: template<class _Tp, class _Ref, class _Ptr> bool std::operator!=(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator!=(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_deque.h:260:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/deque:64:0,
+                 from /usr/include/c++/4.8.2/stack:60,
+                 from /usr/local/include/boost/filesystem/operations.hpp:42,
+                 from /usr/local/include/boost/filesystem.hpp:17,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/spectra.h:4,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/specsac.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:10,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_deque.h:267:5: note: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> bool std::operator!=(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator!=(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_deque.h:267:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::_Deque_iterator<_Tp, _RefR, _PtrR>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/deque:64:0,
+                 from /usr/include/c++/4.8.2/stack:60,
+                 from /usr/local/include/boost/filesystem/operations.hpp:42,
+                 from /usr/local/include/boost/filesystem.hpp:17,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/spectra.h:4,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/specsac.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:10,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_deque.h:1983:5: note: template<class _Tp, class _Alloc> bool std::operator!=(const std::deque<_Tp, _Alloc>&, const std::deque<_Tp, _Alloc>&)
+     operator!=(const deque<_Tp, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_deque.h:1983:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::deque<_Tp, _Alloc>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/stack:61:0,
+                 from /usr/local/include/boost/filesystem/operations.hpp:42,
+                 from /usr/local/include/boost/filesystem.hpp:17,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/spectra.h:4,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/../SpecSac/specsac.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halirSpec.h:10,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:5:
+/usr/include/c++/4.8.2/bits/stl_stack.h:267:5: note: template<class _Tp, class _Seq> bool std::operator!=(const std::stack<_Tp, _Seq>&, const std::stack<_Tp, _Seq>&)
+     operator!=(const stack<_Tp, _Seq>& __x, const stack<_Tp, _Seq>& __y)
+     ^
+/usr/include/c++/4.8.2/bits/stl_stack.h:267:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::stack<_Tp, _Seq>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/armadillo:35:0,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halir.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:6:
+/usr/include/c++/4.8.2/complex:474:5: note: template<class _Tp> bool std::operator!=(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator!=(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^
+/usr/include/c++/4.8.2/complex:474:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::complex<_Tp>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/armadillo:35:0,
+                 from /home/jimmy/Programs/HalIR/Test/../HalIR/halir.h:7,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:6:
+/usr/include/c++/4.8.2/complex:479:5: note: bool std::operator!=(const std::complex<_Tp>&, const _Tp&) [with _Tp = __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >]
+     operator!=(const complex<_Tp>& __x, const _Tp& __y)
+     ^
+/usr/include/c++/4.8.2/complex:479:5: note:   no known conversion for argument 1 from ‘<unresolved overloaded function type>’ to ‘const std::complex<__gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > > >&’
+/usr/include/c++/4.8.2/complex:484:5: note: template<class _Tp> bool std::operator!=(const _Tp&, const std::complex<_Tp>&)
+     operator!=(const _Tp& __x, const complex<_Tp>& __y)
+     ^
+/usr/include/c++/4.8.2/complex:484:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const std::complex<_Tp>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/c++allocator.h:33:0,
+                 from /usr/include/c++/4.8.2/bits/allocator.h:46,
+                 from /usr/include/c++/4.8.2/string:41,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/ext/new_allocator.h:144:5: note: template<class _Tp> bool __gnu_cxx::operator!=(const __gnu_cxx::new_allocator<_Tp>&, const __gnu_cxx::new_allocator<_Tp>&)
+     operator!=(const new_allocator<_Tp>&, const new_allocator<_Tp>&)
+     ^
+/usr/include/c++/4.8.2/ext/new_allocator.h:144:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   ‘std::vector<std::basic_string<char> >::iterator {aka __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >}’ is not derived from ‘const __gnu_cxx::new_allocator<_Tp>’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from /home/jimmy/Programs/HalIR/Test/test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:823:5: note: bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&) [with _Iterator = std::basic_string<char>*; _Container = std::vector<std::basic_string<char> >]
+     operator!=(const __normal_iterator<_Iterator, _Container>& __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:823:5: note:   no known conversion for argument 1 from ‘<unresolved overloaded function type>’ to ‘const __gnu_cxx::__normal_iterator<std::basic_string<char>*, std::vector<std::basic_string<char> > >&’
+/usr/include/c++/4.8.2/bits/stl_iterator.h:817:5: note: template<class _IteratorL, class _IteratorR, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
+     operator!=(const __normal_iterator<_IteratorL, _Container>& __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:817:5: note:   template argument deduction/substitution failed:
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:46: note:   couldn't deduce template parameter ‘_IteratorL’
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                              ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:20:50: error: no pre-increment operator for type
+     for( auto arg=args.begin();arg!=args.end();++arg ) {
+                                                  ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:30:16: error: overloaded function with no contextual type information
+         if (arg->compare(0,2,"-i")==0 ) {
+                ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:30:16: error: base operand of ‘->’ is not a pointer
+/home/jimmy/Programs/HalIR/Test/test.cpp:31:20: error: no pre-increment operator for type
+             if ( ++arg != args.end() ) {
+                    ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:32:26: error: overloaded function with no contextual type information
+                 parm_in=*arg;
+                          ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:38:23: error: overloaded function with no contextual type information
+         } else if (arg->compare(0,2,"-h")==0 ) {
+                       ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:38:23: error: base operand of ‘->’ is not a pointer
+/home/jimmy/Programs/HalIR/Test/test.cpp:45:23: error: overloaded function with no contextual type information
+         } else if (arg->compare(0,5,"-tmpi")==0 ) {
+                       ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:45:23: error: base operand of ‘->’ is not a pointer
+/home/jimmy/Programs/HalIR/Test/test.cpp:67:23: error: overloaded function with no contextual type information
+         } else if (arg->compare(0,1,"-")==0 ) {
+                       ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:67:23: error: base operand of ‘->’ is not a pointer
+/home/jimmy/Programs/HalIR/Test/test.cpp:68:44: error: overloaded function with no contextual type information
+             cerr << "Error: command: " << *arg << " does not exist" << endl;
+                                            ^
+/home/jimmy/Programs/HalIR/Test/test.cpp:71:30: error: overloaded function with no contextual type information
+             files.push_back(*arg);
+                              ^

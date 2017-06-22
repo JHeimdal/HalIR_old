@@ -1,0 +1,5 @@
+# Ignore file
+TODO
+# ignore build directories
+Build[0-9]
+Build
