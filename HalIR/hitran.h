@@ -45,7 +45,7 @@ class Hitran
  private:
     template <typename T>
     void vprint(const std::vector<T> &vec) {
-        for( T v : vec) 
+        for( T v : vec)
             std::cout << v << " ";
         std::cout << std::endl;
     }
@@ -102,11 +102,7 @@ class Hitran
     */
     HitranLine getHitranLine( std::string& tmp) {
         HitranLine hline;
-// 	if ( !std::getline(is,tmp)) {
-// 		std::cerr << "Problem in hitran.h istream friend\n";
-// 		exit(99);
-// 	}
-	hline.molec_num =    atoi(tmp.substr(0,2).c_str());
+	      hline.molec_num =    atoi(tmp.substr(0,2).c_str());
         hline.isotp_num =    atoi(tmp.substr(2,1).c_str());
         hline.trans_mu =     atof(tmp.substr(3,12).c_str());
         hline.line_I =       atof(tmp.substr(15,10).c_str());
@@ -125,15 +121,11 @@ class Hitran
         strcpy(hline.line_mix , tmp.substr(145,1).c_str());
         hline.u_stat_w =     atof(tmp.substr(146,7).c_str());
         hline.l_stat_w =     atof(tmp.substr(153,7).c_str());
-	return hline;
+	      return hline;
     }
-        HitranLine getEmptyHitranLine() {
+    HitranLine getEmptyHitranLine() {
         HitranLine hline;
-// 	if ( !std::getline(is,tmp)) {
-// 		std::cerr << "Problem in hitran.h istream friend\n";
-// 		exit(99);
-// 	}
-	hline.molec_num =    0;
+	      hline.molec_num =    0;
         hline.isotp_num =    0;
         hline.trans_mu =     0.;
         hline.line_I =       0.;
@@ -152,14 +144,14 @@ class Hitran
         strcpy(hline.line_mix , " ");
         hline.u_stat_w =     0.;
         hline.l_stat_w =     0.;
-	return hline;
+	      return hline;
     }
     int mol_mass_fnum(int num) {
 	    std::vector<int>::iterator it;
 	    it=find(hitdat.molec_num.begin(),hitdat.molec_num.end(),num);
 	    return hitdat.molec_M[int(it-hitdat.molec_num.begin())];
     }
-	    
+
  public:
     Hitran();
     Hitran(bool verbose);

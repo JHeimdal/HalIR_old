@@ -17,8 +17,6 @@ bool mycomp(string& s, string& v) {
 string Hitran::trims(const std::string &ss ) {
     string ans(ss);
     boost::trim(ans);
-    //boost::to_upper(ans);
-    //cout << ans << " ";
     return ans;
 }
 Hitran::Hitran()
@@ -104,7 +102,7 @@ wxArrayString Hitran::GetAbundence(wxString ss)
 vector<int> Hitran::GetNisotp(std::string &molec) {
     vector<int> ans;
     auto ret=hitdat.molec_rmap.equal_range(molec);
-    for( auto it=ret.first; it!=ret.second; ++it ) 
+    for( auto it=ret.first; it!=ret.second; ++it )
         ans.push_back(it->second);
     return ans;
 }
@@ -130,9 +128,6 @@ Molparm Hitran::create_molparm(const int *molecules,const int *nmolec,const doub
     double wave_num;
     const int *atom;
     // Init Molparm structure.
-    //vector<int> molec(molecules, molecules+sizeof(molecules)/sizeof(int));
-    //if ( *nmolec > 1 ) 
-//	    molec.resize(1);
     Molparm data;
     data.nmolec=*nmolec;
     data.conc=*conc;
@@ -142,21 +137,20 @@ Molparm Hitran::create_molparm(const int *molecules,const int *nmolec,const doub
     if (!in) cerr << "Could not open file " << par_path << endl;
     while( getline(in,line) ) {
         if( line.empty() ) continue;
-	wave_num = atof( line.substr(3,12).c_str() );
-        //atom = find(molecules,molecules+sizeof(molecules)/sizeof(int),atoi(line.substr(0,3).c_str()));
-	atom = find(molecules,molecules+data.nmolec,atoi(line.substr(0,3).c_str()));
-	if( ( wave_num >= *high ) && ( wave_num <= *low ) && ( *atom==atoi(line.substr(0,3).c_str()) )) {
-		fline=true;
-// 		data->trans_mu.push_back(atof(line.substr(3,12).c_str()));
-// 		data->line_I.push_back(atof(line.substr(15,10).c_str()));
-// 		data->airB.push_back(atof(line.substr(35,5).c_str()));
-// 		data->selfB.push_back(atof(line.substr(40,5).c_str()));
-// 		data->temp_air.push_back(atof(line.substr(55,4).c_str()));
-// 		data->Dpress.push_back(atof(line.substr(59,8).c_str()));
-// 		data->mass.push_back(mol_mass_fnum(atoi(line.substr(0,3).c_str())));
-		data.hline.push_back(getHitranLine(line));
-	}
-	if( wave_num >= *low ) break;  
+				wave_num = atof( line.substr(3,12).c_str() );
+				atom = find(molecules,molecules+data.nmolec,atoi(line.substr(0,3).c_str()));
+				if( ( wave_num >= *high ) && ( wave_num <= *low ) && ( *atom==atoi(line.substr(0,3).c_str()) )) {
+					fline=true;
+					// 		data->trans_mu.push_back(atof(line.substr(3,12).c_str()));
+					// 		data->line_I.push_back(atof(line.substr(15,10).c_str()));
+					// 		data->airB.push_back(atof(line.substr(35,5).c_str()));
+					// 		data->selfB.push_back(atof(line.substr(40,5).c_str()));
+					// 		data->temp_air.push_back(atof(line.substr(55,4).c_str()));
+					// 		data->Dpress.push_back(atof(line.substr(59,8).c_str()));
+					// 		data->mass.push_back(mol_mass_fnum(atoi(line.substr(0,3).c_str())));
+					data.hline.push_back(getHitranLine(line));
+				}
+				if( wave_num >= *low ) break;
     }
     in.close();
     if ( fline )

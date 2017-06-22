@@ -73,14 +73,14 @@ int main(int argc,char **argv)
     }
     if ( prm_in ) {
         HalIRSpec halir_parm(parm_in);
-	    //cout << halir_parm;
+	      cout << halir_parm;
         HalIR halir(halir_parm);
         //cout << files.size() << endl;
         //spectras.add(files[0]);
         //string fname="co_2.spc";
         //spectras[0]->write(fname);
-	    //cout << "halir_init: Fine\n";
-	    halir.runDawsonVoigt();
+	      //cout << "halir_init: Fine\n";
+	      halir.runDawsonVoigt();
     }
     return 0;
 }

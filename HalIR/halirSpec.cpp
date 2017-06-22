@@ -4,7 +4,7 @@
 //#include "specsac.h"
 
 using namespace std;
-HalIRSpec::HalIRSpec() 
+HalIRSpec::HalIRSpec()
 {
     simulate=false;
     has_bgfile=false;
@@ -92,8 +92,8 @@ HalIRSpec::HalIRSpec(std::string &infile)
     apod  = 0;
     method= 0;
     fov   = 0;
-    
-    
+
+
     int off=0;int c=0;
     for( int v : nmolec ) {
       int *m = new int[v];
@@ -103,11 +103,7 @@ HalIRSpec::HalIRSpec(std::string &infile)
       mparm.push_back(hitran.create_molparm(m,&v,&cc,&low,&high));
       delete [] m;
       c++;
-    }
-    //for( auto v : mparm[0].hline )
-    //  std::cout << v.molec_num*10 + v.isotp_num << std::endl;
-// // 	  std::cerr << "ERROR\n";
-//     }    
+    }    
 }
 HalIRSpec::~HalIRSpec()
 {
@@ -146,27 +142,27 @@ ostream &operator<< (ostream &os, HalIRSpec &parm)
     os << "envi:\t" << parm.temp <<"\t"<< parm.press <<"\t"<< parm.pathl << endl;
     os << "uenvi:\t" << "K\tatm\tcm" << endl;
     os << "molec: ";
-    for( int i=0;i<parm.tmolec.size();i++ ) 
+    for( int i=0;i<parm.tmolec.size();i++ )
         os << parm.tmolec[i] << " ";
     os << "\nnmolec: ";
-    for( int i=0;i<parm.tnmolec.size();i++ ) 
+    for( int i=0;i<parm.tnmolec.size();i++ )
         os << parm.tnmolec[i] << " ";
     os << "\n";
     for( int i=0;i<parm.tnmolec.size();i++ )
         os << parm.hitran.GetMolecM(parm.tnmolec[i]) << " ";
     os << "\nisotp: ";
-    for( int i=0;i<parm.tisotp.size();i++ ) 
+    for( int i=0;i<parm.tisotp.size();i++ )
         os << parm.tisotp[i] << " ";
     os << "\nconc: ";
-    for( int i=0;i<parm.tconc.size();i++ ) 
+    for( int i=0;i<parm.tconc.size();i++ )
         os << parm.tconc[i] << " ";
     os << "\nuconc: ";
-    for( int i=0;i<parm.tuconc.size();i++ ) 
+    for( int i=0;i<parm.tuconc.size();i++ )
         os << parm.tuconc[i] << " ";
     os << endl;
     if ( !parm.simulate ) {
         os << "files:\n";
-        for( int i=0;i<parm.files.size();i++ ) 
+        for( int i=0;i<parm.files.size();i++ )
             os << " " << parm.files[i] << endl;
         os << "end of files" << endl;
     }
@@ -257,5 +253,3 @@ istream &operator>> (istream &in, HalIRSpec &parm)
     }
     return in;
 }
-
-
