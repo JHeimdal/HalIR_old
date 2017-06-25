@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "spectra.h"
+#include "spectra.hpp"
 
 class SpecSac : public Spectra
 {

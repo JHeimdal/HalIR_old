@@ -1,10 +1,10 @@
-#pragma once 
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
 
-#include "spectra.h"
-#include "spcformat.h"
+#include "spectra.hpp"
+#include "spcformat.hpp"
 class SPC : public Spectra
 {
 private:

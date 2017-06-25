@@ -6,8 +6,8 @@
 #include <sstream>
 #include <map>
 
-#include "hitran.h"
-#include "../SpecSac/specsac.h"
+#include "hitran.hpp"
+#include "../SpecSac/specsac.hpp"
 
 class HalIRSpec
 {

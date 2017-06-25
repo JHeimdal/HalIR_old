@@ -1,4 +1,4 @@
-#include "spc.h"
+#include "spc.hpp"
 
 using namespace std;
 
@@ -33,13 +33,13 @@ SPC::SPC(string &pathname) : Spectra(pathname)
 	    iofile.read((char *)ydata, sizeof(float)*hdr.fnpts);
 	    iofile.close();
 	}
-	// Calculate xdata 
+	// Calculate xdata
 	for(int i=0;i<npts;++i) {
         xdata[i] = xmin+i*(xmax-xmin)/(npts-1);
 	}
 }
 
-void SPC::write(string &fname) 
+void SPC::write(string &fname)
 {
     iofile.open(fname.c_str(),ios_base::out | ios_base::binary );
     iofile.write( (char*)&hdr, sizeof(SPCHDR) );

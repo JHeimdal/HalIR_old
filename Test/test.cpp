@@ -2,9 +2,9 @@
 #include <string>
 #include <vector>
 
-#include "../HalIR/halirSpec.h"
-#include "../HalIR/halir.h"
-#include "../SpecSac/specsac.h"
+#include "../HalIR/halirSpec.hpp"
+#include "../HalIR/halir.hpp"
+#include "../SpecSac/specsac.hpp"
 
 using namespace std;
 
