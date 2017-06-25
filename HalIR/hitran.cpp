@@ -8,7 +8,7 @@
 #include <string>
 #include <boost/algorithm/string.hpp>
 
-#include "hitran.h"
+#include "hitran.hpp"
 
 using namespace std;
 bool mycomp(string& s, string& v) {

@@ -41,7 +41,7 @@ protected:
     Spectra(std::string &infile);
 public:
     Spectra() { data=NULL;xdata=NULL;ydata=NULL; }
-    Spectra(int dim,const xydata* indata); 
+    Spectra(int dim,const xydata* indata);
 	Spectra(const Spectra& spec) { };
 	Spectra& operator=(const Spectra& spec) {
 		SetSize(spec.npts);
@@ -52,7 +52,7 @@ public:
 		return *this;
 	}
 	inline Spectra& operator/=(const Spectra& spec) {
-        // TODO: måste se range
+        // TODO: mï¿½ste se range
 		for (int i=0;i<spec.npts;i++) {
 			data[i][1]=data[i][1]/spec.data[i][1];
 		}

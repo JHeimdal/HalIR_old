@@ -1,5 +1,5 @@
-#include "halir.h"
-#include "voigt.h"
+#include "halir.hpp"
+#include "voigt.hpp"
 
 using namespace std;
 

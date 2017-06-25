@@ -1,6 +1,6 @@
 #include <iostream>
-#include "spc.h"
-#include "specsac.h"
+#include "spc.hpp"
+#include "specsac.hpp"
 
 using namespace std;
 

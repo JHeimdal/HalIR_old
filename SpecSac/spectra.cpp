@@ -1,9 +1,9 @@
 #include <boost/algorithm/string.hpp>
-#include "spectra.h"
+#include "spectra.hpp"
 
 void Spectra::check_file(std::string &filepath,cfile_msg &ans,bool guess, specForm frm)
 {
-    // Make some checks on the file befor load as well as try to guess 
+    // Make some checks on the file befor load as well as try to guess
     // the file format if required.
     using namespace boost::filesystem;
     path p(filepath);
@@ -34,7 +34,7 @@ void Spectra::check_file(std::string &filepath,cfile_msg &ans,bool guess, specFo
                     ans.format=frm;
                     ans.msg << "File type " << p.filename() << " is not supported";
                     return;
-                } else { 
+                } else {
                     ans.isOk=true;
                     ans.format=frm;
                     ans.msg << " ";
@@ -77,7 +77,7 @@ Spectra::Spectra(std::string &infile) {
         return;
     }
     fpath=path(infile);
-    m_sstrm << fpath.filename(); 
+    m_sstrm << fpath.filename();
     m_sstrm >> filename;
     m_sstrm.clear();
     m_sstrm << fpath.relative_path();
@@ -95,7 +95,7 @@ Spectra::Spectra(std::string &infile) {
     m_init_ok=true;
 }
 
-Spectra::Spectra(int dim,const xydata* indata) 
+Spectra::Spectra(int dim,const xydata* indata)
 {
 	ymax=1e-30;
 	ymin=1e30;
@@ -140,7 +140,7 @@ void Spectra::Cut(CutInfo& cut)
 	out.write((char *)&hdr, sizeof(SPCHDR));
 	out.write((char *)&shd[0],sizeof(SUBHDR));
 	temp = new float[hdr.fnpts];
-	for(int i=0;i<npts;++i) 
+	for(int i=0;i<npts;++i)
 	    temp[i]=data[i][1];
 	out.write((char *)temp, sizeof(float)*hdr.fnpts);
 	out.close();

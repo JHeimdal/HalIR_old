@@ -1,6 +1,6 @@
 #include <boost/algorithm/string.hpp>
 #include <algorithm>
-#include "halirSpec.h"
+#include "halirSpec.hpp"
 //#include "specsac.h"
 
 using namespace std;

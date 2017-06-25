@@ -53,7 +53,7 @@ class Hitran
     char *par_path;
     char *dat_path;
     int nentries;
-    //std::fstream iofile;
+    // void std::fstream iofile;
 
     struct HitranDat {
 	    std::map<int,std::string> molec_map; // Molecular map int->name

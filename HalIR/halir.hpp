@@ -6,7 +6,7 @@
 #define ARMA_DONT_USE_WRAPPER
 #include <armadillo>
 #include "cmath"
-#include "halirSpec.h"
+#include "halirSpec.hpp"
 
 class HalIR : public HalIRSpec
 {
