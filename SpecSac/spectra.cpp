@@ -1,12 +1,21 @@
 #include <boost/algorithm/string.hpp>
 #include "spectra.hpp"
 
-void Spectra::check_file(std::string &filepath,cfile_msg &ans,bool guess, specForm frm)
+void Spectra::check_file(std::string &filepath,cfile_msg &ans,bool guess, bool newfil, specForm frm)
 {
     // Make some checks on the file befor load as well as try to guess
     // the file format if required.
     using namespace boost::filesystem;
     path p(filepath);
+    if ( newfil ) {
+        if ( exists(p) ) {
+            std::cerr << "Cant create new file: " << p.filename() <<  "file exists.\n";
+        }
+        ans.format=SPCF;
+        ans.isOk=true;
+        ans.msg << "Created file: " << p.filename();
+        return;
+    }
     try {
     if ( exists(p) ) {
         if ( is_regular_file(p) ) {
@@ -65,11 +74,11 @@ void Spectra::check_file(std::string &filepath,cfile_msg &ans,bool guess, specFo
         return;
     }
 }
-Spectra::Spectra(std::string &infile) {
+Spectra::Spectra(std::string &infile, bool newfil) {
     using namespace boost::filesystem;
     using namespace boost::algorithm;
     // Check that file is ok.
-    check_file(infile,m_msg,false);
+    check_file(infile,m_msg,false,newfil);
     if ( !m_msg.isOk ) {
         std::cerr << m_msg.msg.str() << std::endl;
         data=NULL;

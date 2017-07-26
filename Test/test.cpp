@@ -1,4 +1,13 @@
+#ifdef WINDOWS
+#include <direct.h>
+#define GetCurrDir _getcwd
+#else
+#include <unistd.h>
+#define GetCurrDir getcwd
+#endif
+
 #include <iostream>
+#include <cstdio>
 #include <string>
 #include <vector>
 
@@ -8,9 +17,17 @@
 
 using namespace std;
 
+string GetCurrWDir( void ) {
+    char buff[FILENAME_MAX];
+    GetCurrDir( buff, FILENAME_MAX);
+    string retval(buff);
+    return retval;
+}
+
 int main(int argc,char **argv)
 {
     bool prm_in=false;
+    string rootdir = GetCurrWDir();
     vector<string> args( argv+1, argv+argc );
     vector<string> files;
     string parm_in;
@@ -72,15 +89,16 @@ int main(int argc,char **argv)
         }
     }
     if ( prm_in ) {
-        HalIRSpec halir_parm(parm_in);
-	      cout << halir_parm;
-        HalIR halir(halir_parm);
-        //cout << files.size() << endl;
+        //HalIRSpec halir_parm(parm_in);
+	    //cout << halir_parm;
+        parm_in = rootdir + "/" + parm_in;
+        HalIR halir(parm_in);
+        cout << halir << endl;
         //spectras.add(files[0]);
         //string fname="co_2.spc";
         //spectras[0]->write(fname);
-	      //cout << "halir_init: Fine\n";
-	      halir.runDawsonVoigt();
+	    //cout << "halir_init: Fine\n";
+	    halir.runDawsonVoigt();
     }
     return 0;
 }

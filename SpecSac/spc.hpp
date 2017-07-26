@@ -16,6 +16,7 @@ private:
     float *temp;
 public:
     SPC(std::string &pathname);
+    SPC(std::string &filepath, double &hlim, double &llim, int &nps, float *data);
     ~SPC() {
         if (shd!=NULL) {
             if  ( sizeof(shd)/sizeof(SUBHDR) > 1 )
@@ -24,5 +25,8 @@ public:
                 delete shd;
         }
     }
-    virtual void write(std::string &fname);
+    virtual void write();
+    virtual std::string GetName() {
+        return filename;
+    }
 };

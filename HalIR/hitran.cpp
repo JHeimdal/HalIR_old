@@ -120,6 +120,10 @@ int Hitran::GetMolecN(const int isotp) {
 int Hitran::GetMolecM(const int molec) {
   return hitdat.molec_mass[molec];
 }
+string Hitran::GetMolecName(const int molec) {
+  return hitdat.molec_map[molec];
+}
+
 Molparm Hitran::create_molparm(const int *molecules,const int *nmolec,const double *conc,const double *low,const double *high)
 {
     ifstream in;
@@ -129,10 +133,11 @@ Molparm Hitran::create_molparm(const int *molecules,const int *nmolec,const doub
     const int *atom;
     // Init Molparm structure.
     Molparm data;
-    data.nmolec=*nmolec;
-    data.conc=*conc;
-    data.llim=*low;
-    data.hlim=*high;
+	data.name = GetMolecName(molecules[0]);
+    data.nmolec = *nmolec;
+    data.conc = *conc;
+    data.llim = *low;
+    data.hlim = *high;
     in.open(par_path);
     if (!in) cerr << "Could not open file " << par_path << endl;
     while( getline(in,line) ) {

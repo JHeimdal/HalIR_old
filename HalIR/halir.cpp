@@ -13,11 +13,21 @@ HalIR::HalIR(const HalIRSpec &spec) : HalIRSpec(spec)
   simulate=isSimulation();
   if ( simulate ) { cout << "This is a simulation" << endl;}
 }
-
+HalIR::HalIR(string &parm_in) : HalIRSpec(parm_in)
+{
+    // Init HalIRSpec
+    Temp=getTemp();
+    Press=getPress();
+    PathL=getPathl();
+    simulate=isSimulation();
+    if ( simulate ) { cout << "This is a simulation" << endl;}
+}
 void HalIR::setupRun()
 {
   using namespace arma;
+  int MNPTS=25538;
   cout << "Run!: " << mparm.size() << " lines\n";
+  int cc=0;
   for( auto m : mparm ) {
     int msize=m.hline.size();
     alphaD.set_size(msize);
@@ -25,7 +35,7 @@ void HalIR::setupRun()
     v0.set_size(msize);
     q=m.conc/Press;
     cerr << "vmr: " << q << " lines: " << msize << endl;
-    mu=linspace(m.llim,m.hlim,25536);
+    mu=linspace<fvec>(m.llim,m.hlim,MNPTS);
     y.zeros( mu.size() );
     for(int i=0;i<msize;i++ ) {
       v0[i]=m.hline[i].trans_mu+m.hline[i].pressure_S*Press;
@@ -35,11 +45,17 @@ void HalIR::setupRun()
     /* Test of computation will change structure */
     //bool end=false;
     for(int mm=0;mm<msize;mm++) {
-      double yy=alphaL[mm]/alphaD[mm];
+      float yy=alphaL[mm]/alphaD[mm];
       for(int i=0;i<mu.size();i++) {
 		y[i]+=m.hline[mm].line_I*gfunct(mu[i],v0[mm])*voigt((mu[i]-v0[mm])/alphaD[mm],yy);
       }
     }
+    std::string fname=rootdir+"/"+m.name+"_"+std::to_string(cc)+".spc";
+    spectras.addSPC(fname, m.hlim, m.llim, MNPTS, y.memptr() );
+    cc++;
+  }
+  for( auto s : spectras.spectras) {
+      s->write();
   }
 }
 void HalIR::runDawsonVoigt()

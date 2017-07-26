@@ -29,12 +29,12 @@ class HalIR : public HalIRSpec
     bool simulate;
     bool verbose;
     // Armadillo init
-    arma::vec alphaL;
-    arma::vec alphaD;
-    arma::vec v0;
-    arma::vec y;
-    arma::vec x;
-    arma::vec mu;
+    arma::fvec alphaL;
+    arma::fvec alphaD;
+    arma::fvec v0;
+    arma::fvec y;
+    arma::fvec x;
+    arma::fvec mu;
     /* This is function for COMMENT */
     inline double gfunct(double v,double vi) {
         return (v*tanh(hc*v)/(2*kb*Temp))/(vi*tanh((hc*vi)/(2*kb*Temp)));
@@ -48,6 +48,7 @@ class HalIR : public HalIRSpec
     }
  public:
     HalIR(const HalIRSpec &spec);
+    HalIR(std::string &parm_in);
     void setupRun();
     void runDawsonVoigt();
 };

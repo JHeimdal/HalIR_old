@@ -27,3 +27,8 @@ void SpecSac::add(string &filepath)
         cerr << retmsg.msg.str() << endl;
     }
 }
+void SpecSac::addSPC(std::string &filepath, double &hlim, double &llim, int &nps, float *data)
+{
+    cout << "addSPC: " << filepath << endl;
+    spectras.push_back( new SPC(filepath,hlim,llim,nps,data) );
+}

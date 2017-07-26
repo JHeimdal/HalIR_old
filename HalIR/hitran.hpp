@@ -33,6 +33,7 @@ struct HitranLine {
   double l_stat_w;	 // Lower statistical weight
 };
 struct Molparm {
+    std::string name;
     int nmolec;
     double conc;
     double llim;
@@ -147,11 +148,6 @@ class Hitran
         hline.l_stat_w =     0.;
 	      return hline;
     }
-    int mol_mass_fnum(int num) {
-	    std::vector<int>::iterator it;
-	    it=find(hitdat.molec_num.begin(),hitdat.molec_num.end(),num);
-	    return hitdat.molec_M[int(it-hitdat.molec_num.begin())];
-    }
 
  public:
     Hitran();
@@ -162,4 +158,5 @@ class Hitran
     std::vector<int> GetMolecN(std::string &molec);
     int GetMolecN(int isotp);
     int GetMolecM(int molec);
+    std::string GetMolecName(const int molec);
 };

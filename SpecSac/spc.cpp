@@ -4,10 +4,13 @@ using namespace std;
 
 SPC::SPC(string &pathname) : Spectra(pathname)
 {
+    /*************************
+    * Reading of an SPC file *
+    *************************/
     if(!isOK()) {
         return;
     }
-    cout << "Reading file\n";
+    //cout << "Reading file\n";
 	iofile.open(pathname.c_str(), ios_base::in | ios_base::binary);
 	if (iofile.is_open()) {
 	    //hdr = new SPCHDR;
@@ -38,12 +41,32 @@ SPC::SPC(string &pathname) : Spectra(pathname)
         xdata[i] = xmin+i*(xmax-xmin)/(npts-1);
 	}
 }
-
-void SPC::write(string &fname)
+SPC::SPC(std::string &filepath, double &hlim, double &llim, int &nps, float *data) : Spectra(filepath, true)
 {
-    iofile.open(fname.c_str(),ios_base::out | ios_base::binary );
+    if(!isOK()) {
+        return;
+    }
+    SetSize(nps);
+    DWORD one=1;
+    //SUBHDR mshd;
+    shd = new SUBHDR[one];
+    hdr.fnpts=npts;
+    hdr.ffirst=hlim;
+    hdr.flast=llim;
+    hdr.fnsub=one;
+    SetYData(data);
+    //write(filepath);
+    //delete [] shd;
+}
+void SPC::write()
+{
+    //string fname = 
+    iofile.open(name.c_str(),ios_base::out | ios_base::binary );
+    //std::cout << "About to do first write\n";
     iofile.write( (char*)&hdr, sizeof(SPCHDR) );
+    //std::cout << "About to do second write\n";
     iofile.write( (char*)&shd[0], sizeof(SUBHDR) );
+    //std::cout << "About to do third write\n";
     iofile.write( (char*)ydata, sizeof(float)*hdr.fnpts);
     iofile.close();
     delete [] temp;

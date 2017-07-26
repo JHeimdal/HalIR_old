@@ -1,9 +1,19 @@
 #include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
 #include <algorithm>
 #include "halirSpec.hpp"
 //#include "specsac.h"
 
 using namespace std;
+void HalIRSpec::check_file(string &filename)
+{
+    using namespace boost::filesystem;
+    path p(filename);
+    path tmp = p.parent_path();
+    rootdir = tmp.string();
+    tmp = p.filename();
+    inputfile = tmp.string();
+}
 HalIRSpec::HalIRSpec()
 {
     simulate=false;
@@ -47,6 +57,7 @@ HalIRSpec::HalIRSpec(std::string &infile)
     double ctmp;
     int uctmp;
     double ugtmp;
+    check_file(infile);
     std::fstream infil;
     infil.open(infile.c_str(),ios_base::in);
     if (!infil.is_open()) {
@@ -140,6 +151,8 @@ void HalIRSpec::set_maps()
 // Output
 ostream &operator<< (ostream &os, HalIRSpec &parm)
 {
+    os << "Input file: " << parm.inputfile << endl;
+    os << "RootWorkDir: " << parm.rootdir << endl;
     os << "envi:\t" << parm.temp <<"\t"<< parm.press <<"\t"<< parm.pathl << endl;
     os << "uenvi:\t" << "K\tatm\tcm" << endl;
     os << "molec: ";

@@ -27,18 +27,21 @@ protected:
 			dim=0;
             npts=dim;
 	}
+    void SetYData(float *data) {
+        memcpy(ydata,data,sizeof(float)*npts);
+    }
     enum specForm { NS, SPCF, JCAMP };
     struct cfile_msg {
          bool isOk;
          std::stringstream msg;
          specForm format;
      } m_msg;
-    void check_file(std::string &filepath,cfile_msg &ans,bool guess=true, specForm frm=NS);
+    void check_file(std::string &filepath,cfile_msg &ans,bool guess=true, bool newfil=false, specForm frm=NS);
 	float ymax,ymin,xmax,xmin;
     std::string filename;
     std::string filepath;
     std::string name;
-    Spectra(std::string &infile);
+    Spectra(std::string &infile, bool newfil=false);
 public:
     Spectra() { data=NULL;xdata=NULL;ydata=NULL; }
     Spectra(int dim,const xydata* indata);
@@ -66,5 +69,8 @@ public:
         }
 	}
     bool isOK() { return m_init_ok; }
-    virtual void write(std::string &fname) {}
+    virtual void write() {}
+    virtual std::string GetName() {
+        return name;
+    }
 };

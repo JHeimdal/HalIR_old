@@ -6,6 +6,7 @@
 #include <sstream>
 #include <map>
 
+
 #include "hitran.hpp"
 #include "../SpecSac/specsac.hpp"
 
@@ -82,10 +83,16 @@ private:
     std::map<std::string,double> path_map;
     void set_maps();
     /* End simulation data*/
+    /* Information and functions for dealing with files */
+
+    void check_file(std::string &filename);
+
 protected:
     std::vector<Molparm> mparm;
     Hitran hitran;
     SpecSac spectras;
+    std::string rootdir;
+    std::string inputfile;
 public:
     HalIRSpec();
     HalIRSpec(std::string &infile);
