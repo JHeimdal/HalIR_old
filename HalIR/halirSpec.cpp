@@ -111,11 +111,11 @@ HalIRSpec::HalIRSpec(std::string &infile)
       memcpy(m,tnmolec.data()+off,sizeof(int)*v);
       off+=v;
       double cc = press_map[tuconc[c]]*tconc[c];
-      mparm.push_back(hitran.create_molparm(m,&v,&cc,&low,&high));
+      mparm.push_back(hitran.create_molparm(m,v,cc,high,low));
       delete [] m;
       c++;
     }
-    hitran.save_molparm(mparm[0]);
+    //hitran.save_molparm(mparm[0]);
 }
 HalIRSpec::~HalIRSpec()
 {

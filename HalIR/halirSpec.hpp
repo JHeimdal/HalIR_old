@@ -88,7 +88,7 @@ private:
     void check_file(std::string &filename);
 
 protected:
-    std::vector<Molparm> mparm;
+    std::vector<molparm*> mparm;
     Hitran hitran;
     SpecSac spectras;
     std::string rootdir;

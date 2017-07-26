@@ -93,7 +93,7 @@ int main(int argc,char **argv)
 	    //cout << halir_parm;
         parm_in = rootdir + "/" + parm_in;
         HalIR halir(parm_in);
-        cout << halir << endl;
+        cerr << halir << endl;
         //spectras.add(files[0]);
         //string fname="co_2.spc";
         //spectras[0]->write(fname);
