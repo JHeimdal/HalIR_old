@@ -22,9 +22,9 @@ class HalIR : public HalIRSpec
     const double kb=1.3806503E-16; // erg/K
     const double atmmass=1.6605E-24; // g
     //static const double hc=1.98644521E-25; // J*m
-    //static const double c_sq=8.987551787E16; // m^2*s^-2
-    //static const double kb=1.3806503E-23; // J/K
-    //static const double atmmass=1.6605E-27; // kg
+    //const double c_sq=8.987551787E16; // m^2*s^-2
+    //const double kb=1.3806503E-23; // J/K
+    //const double atmmass=1.6605E-27; // kg
     const double Na=6.022E23;
     bool simulate;
     bool verbose;
@@ -49,6 +49,5 @@ class HalIR : public HalIRSpec
  public:
     HalIR(const HalIRSpec &spec);
     HalIR(std::string &parm_in);
-    void setupRun();
     void runDawsonVoigt();
 };

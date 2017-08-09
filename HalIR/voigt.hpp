@@ -7,7 +7,7 @@
  * alphaL: Lorentzian half-width                                      *
  **********************************************************************/
 #include <cmath>
-inline double voigt(const double v,const double y) {
+inline double voigt(const double &v,const double &y) {
 	int region,i,j,n0;
 	double x,H=0.201,y2,V,VV,U,UU,MAX_,LOW,d1,d2,e1,e2,sum,x2,xp,xx;
 	static const double DH=0.4, A1=2.0/3.0, A2=0.4, A3=2.0/7.0;

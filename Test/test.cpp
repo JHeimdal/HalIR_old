@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <string>
 #include <vector>
+#include <chrono>
 
 #include "../HalIR/halirSpec.hpp"
 #include "../HalIR/halir.hpp"
@@ -26,6 +27,7 @@ string GetCurrWDir( void ) {
 
 int main(int argc,char **argv)
 {
+    chrono::time_point<chrono::system_clock> start, end;
     bool prm_in=false;
     string rootdir = GetCurrWDir();
     vector<string> args( argv+1, argv+argc );
@@ -98,7 +100,11 @@ int main(int argc,char **argv)
         //string fname="co_2.spc";
         //spectras[0]->write(fname);
 	    //cout << "halir_init: Fine\n";
+        start = chrono::system_clock::now();
 	    halir.runDawsonVoigt();
+        end = chrono::system_clock::now();
+        chrono::duration<double> elapsed_seconds = end-start;
+        cerr << "elapsed time: " << elapsed_seconds.count() << "s\n";
     }
     return 0;
 }

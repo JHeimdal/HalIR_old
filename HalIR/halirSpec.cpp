@@ -53,6 +53,7 @@ HalIRSpec::HalIRSpec(std::string &infile)
     ext=-1;
     pathl=-1;
     set_maps();
+    //hitran.makeHitPar();
     int ntmp;
     double ctmp;
     int uctmp;

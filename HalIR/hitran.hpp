@@ -20,14 +20,14 @@ struct molparm {
     int    *molecules;
     int    *molec_num;	 // Molecule Number
     int    *isotp_num;	 // Isotopologue Number
-    double *trans_mu;	 // Transition wavenumber (cm^-1)
-    double *line_I;	 // Line Intensity
-    double *einstein_A;	 // Einstein A-coefficient
-    double *air_B;		 // Air broadened with
-    double *self_B;	 // Self broadened width
-    double *low_state_en;	 // Lower state energy
-    double *temp_air_B;	 // Temperature dependence of air width
-    double *pressure_S;	 // Pressure Shift
+    float  *trans_mu;	 // Transition wavenumber (cm^-1)
+    float  *line_I;	 // Line Intensity
+    float  *einstein_A;	 // Einstein A-coefficient
+    float  *air_B;		 // Air broadened with
+    float  *self_B;	 // Self broadened width
+    float  *low_state_en;	 // Lower state energy
+    float  *temp_air_B;	 // Temperature dependence of air width
+    float  *pressure_S;	 // Pressure Shift
     //char   **u_vib_quant;// Upper vibrational quanta
     //char   **l_vib_quant;// Lower vibrational quanta
     //char   **u_loc_quant;// Upper local quanta
@@ -35,8 +35,8 @@ struct molparm {
     int    *err_code;	 // Error codes
     int    *ref_code;	 // Reference codes
     //char   **line_mix;	 // Flag for line mixing
-    double *u_stat_w;	 // Upper statistical weight
-    double *l_stat_w;	 // Lower statistical weight
+    float  *u_stat_w;	 // Upper statistical weight
+    float  *l_stat_w;	 // Lower statistical weight
 };
 
 class Hitran
@@ -45,14 +45,14 @@ private:
 void initMolparm(unsigned size, molparm *mp) {
       mp->molec_num = new int[size];
       mp->isotp_num = new int[size];
-      mp->trans_mu = new double[size];
-      mp->line_I = new double[size];
-      mp->einstein_A = new double[size];
-      mp->air_B = new double[size];
-      mp->self_B = new double[size];
-      mp->low_state_en = new double[size];
-      mp->temp_air_B = new double[size];
-      mp->pressure_S = new double[size];
+      mp->trans_mu = new float[size];
+      mp->line_I = new float[size];
+      mp->einstein_A = new float[size];
+      mp->air_B = new float[size];
+      mp->self_B = new float[size];
+      mp->low_state_en = new float[size];
+      mp->temp_air_B = new float[size];
+      mp->pressure_S = new float[size];
       //mp->u_vib_quant = new char[size][16];
       //mp->l_vib_quant = new char[size][16];
       //mp->u_loc_quant = new char[size][16];
@@ -60,8 +60,8 @@ void initMolparm(unsigned size, molparm *mp) {
       mp->err_code = new int[size];
       mp->ref_code = new int [size];
       //mp->line_mix = new char[size][2];
-      mp->u_stat_w = new double[size];
-      mp->l_stat_w = new double[size];
+      mp->u_stat_w = new float[size];
+      mp->l_stat_w = new float[size];
 }
 inline std::string trims(const std::string &ss);
 struct HitranDat {
@@ -92,14 +92,14 @@ struct HitranDat {
 struct HitranLine {
   int    molec_num;	 // Molecule Number
   int    isotp_num;	 // Isotopologue Number
-  double trans_mu;	 // Transition wavenumber (cm^-1)
-  double line_I;	 // Line Intensity
-  double einstein_A;	 // Einstein A-coefficient
-  double air_B;		 // Air broadened with
-  double self_B;	 // Self broadened width
-  double low_state_en;	 // Lower state energy
-  double temp_air_B;	 // Temperature dependence of air width
-  double pressure_S;	 // Pressure Shift
+  float  trans_mu;	 // Transition wavenumber (cm^-1)
+  float  line_I;	 // Line Intensity
+  float  einstein_A;	 // Einstein A-coefficient
+  float  air_B;		 // Air broadened with
+  float  self_B;	 // Self broadened width
+  float  low_state_en;	 // Lower state energy
+  float  temp_air_B;	 // Temperature dependence of air width
+  float  pressure_S;	 // Pressure Shift
   char   u_vib_quant[16];// Upper vibrational quanta
   char   l_vib_quant[16];// Lower vibrational quanta
   char   u_loc_quant[16];// Upper local quanta
@@ -107,8 +107,8 @@ struct HitranLine {
   int    err_code;	 // Error codes
   int    ref_code;	 // Reference codes
   char   line_mix[2];	 // Flag for line mixing
-  double u_stat_w;	 // Upper statistical weight
-  double l_stat_w;	 // Lower statistical weight
+  float  u_stat_w;	 // Upper statistical weight
+  float  l_stat_w;	 // Lower statistical weight
   inline bool operator<(const HitranLine &b) {
       return this->trans_mu < b.trans_mu;
   }
@@ -146,6 +146,9 @@ public:
             //std::cout << hl.molec_num << " " << hl.isotp_num << " " << hl.trans_mu << "\n";
     }
     bool save_molparm(const molparm *data);
+    void makeHitPar() {
+        writeHitPar();
+    }
     std::vector<int> GetNisotp(std::string &molec);
     std::vector<int> GetMolecN(std::string &molec);
     int GetMolecN(int isotp);
