@@ -5,6 +5,7 @@
  ********************************************************/
 #define ARMA_DONT_USE_WRAPPER
 #include <armadillo>
+#include "tips.hpp"
 #include "cmath"
 #include "halirSpec.hpp"
 
@@ -35,9 +36,20 @@ class HalIR : public HalIRSpec
     arma::fvec y;
     arma::fvec x;
     arma::fvec mu;
+    TIPS_2011 tips;
     /* This is function for COMMENT */
     inline double gfunct(double v,double vi) {
         return (v*tanh(hc*v)/(2*kb*Temp))/(vi*tanh((hc*vi)/(2*kb*Temp)));
+    }
+    inline float gfunct(float v,float vi) {
+        return (v*tanh(hc*v)/(2*kb*Temp))/(vi*tanh((hc*vi)/(2*kb*Temp)));
+    }
+    inline float qvr(float &line_I,int &molec_num,int &isotp_num,float &low_state_en,float &v0) {
+        float qvr = tips(molec_num,isotp_num,Temp);
+        float qvr_ref=tips(molec_num,isotp_num,296);
+        float Top = ( qvr_ref*exp(hc*low_state_en/(kb*Temp))*(1-exp(-hc*v0/(kb*Temp))));
+        float Bot = ( qvr*exp(hc*low_state_en/(kb*296))*(1-exp(-hc*v0/(kb*296))));
+        return line_I*(Top/Bot);
     }
     /* next_p2 returns the next number that is a power of two */
     inline int next_p2 ( int a )

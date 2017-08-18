@@ -1,5 +1,6 @@
 #include "hitran.hpp"
 #include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
 
 using namespace std;
 
@@ -10,7 +11,8 @@ string Hitran::trims(const std::string &ss ) {
 }
 Hitran::Hitran()
 {
-    bool HaveBin=true;
+    namespace bf = boost::filesystem;
+    bool createbin=true;
     char *par_path;
     char *dat_path;
     par_path = getenv("HITPAR");
@@ -55,37 +57,44 @@ Hitran::Hitran()
     }
     in.close();
     // Read in the HITRAN database
-    if (HaveBin) {
-        readHitPar(hitpar);
+    bf::path p(par_path);
+    if (p.extension()==".bpar") {
+        readHitPar(p.c_str(),hitpar);
     } else {
-    in.open(par_path);
-    char ctmp[16];
-    do {
-        in.get(ctmp,3); hl.molec_num=atoi(ctmp);
-        in.get(ctmp,2); hl.isotp_num=atoi(ctmp);
-        in.get(ctmp,13); hl.trans_mu=atof(ctmp);
-        in.get(ctmp,11); hl.line_I=(float)atof(ctmp);
-        in.get(ctmp,11); hl.einstein_A=(float)atof(ctmp);
-        in.get(ctmp,6); hl.air_B=(float)atof(ctmp);
-        in.get(ctmp,6); hl.self_B=(float)atof(ctmp);
-        in.get(ctmp,11); hl.low_state_en=(float)atof(ctmp);
-        in.get(ctmp,5); hl.temp_air_B=(float)atof(ctmp);
-        in.get(ctmp,9); hl.pressure_S=(float)atof(ctmp);
-        in.get(ctmp,16); strcpy(hl.u_vib_quant, ctmp);
-        in.get(ctmp,16); strcpy(hl.l_vib_quant, ctmp);
-        in.get(ctmp,16); strcpy(hl.u_loc_quant, ctmp);
-        in.get(ctmp,16); strcpy(hl.l_loc_quant, ctmp);
-        in.get(ctmp,7); hl.err_code=atoi(ctmp);
-        in.get(ctmp,13); hl.ref_code=atoi(ctmp);
-        in.get(ctmp,2); strcpy(hl.line_mix, ctmp);
-        in.get(ctmp,8); hl.u_stat_w=(float)atof(ctmp);
-        in.get(ctmp,8); hl.l_stat_w=(float)atof(ctmp);
-        in.ignore(8,'\n');
-        hitpar.push_back(hl);
-    } while( !in.eof() );
-    hitpar.pop_back();
-    in.close();
-}
+        in.open(par_path);
+        char ctmp[16];
+        do {
+            in.get(ctmp,3); hl.molec_num=atoi(ctmp);
+            in.get(ctmp,2); hl.isotp_num=atoi(ctmp);
+            in.get(ctmp,13); hl.trans_mu=atof(ctmp);
+            in.get(ctmp,11); hl.line_I=(float)atof(ctmp);
+            in.get(ctmp,11); hl.einstein_A=(float)atof(ctmp);
+            in.get(ctmp,6); hl.air_B=(float)atof(ctmp);
+            in.get(ctmp,6); hl.self_B=(float)atof(ctmp);
+            in.get(ctmp,11); hl.low_state_en=(float)atof(ctmp);
+            in.get(ctmp,5); hl.temp_air_B=(float)atof(ctmp);
+            in.get(ctmp,9); hl.pressure_S=(float)atof(ctmp);
+            in.get(ctmp,16); strcpy(hl.u_vib_quant, ctmp);
+            in.get(ctmp,16); strcpy(hl.l_vib_quant, ctmp);
+            in.get(ctmp,16); strcpy(hl.u_loc_quant, ctmp);
+            in.get(ctmp,16); strcpy(hl.l_loc_quant, ctmp);
+            in.get(ctmp,7); hl.err_code=atoi(ctmp);
+            in.get(ctmp,13); hl.ref_code=atoi(ctmp);
+            in.get(ctmp,2); strcpy(hl.line_mix, ctmp);
+            in.get(ctmp,8); hl.u_stat_w=(float)atof(ctmp);
+            in.get(ctmp,8); hl.l_stat_w=(float)atof(ctmp);
+            in.ignore(8,'\n');
+            hitpar.push_back(hl);
+        } while( !in.eof() );
+        hitpar.pop_back();
+        in.close();
+        if (createbin) {
+            bf::path np=p;
+            np.replace_extension("bpar");
+            writeHitPar( np.c_str() );
+            cerr << "Created binary hitpar\nPlease update the HITPAR environment variable\n" << "export HITPAR=/" << np.c_str() << endl;
+        }
+    }
 }
 molparm* Hitran::create_molparm(const int *molecules, const int &nmolec,const double &conc,const double &low,const double &high) {
     vector<HitranLine>::iterator down,up;
@@ -129,14 +138,14 @@ molparm* Hitran::create_molparm(const int *molecules, const int &nmolec,const do
     dtmp.clear();
     return result;
 }
-void Hitran::writeHitPar() {
-    ofstream fout("HITRAN08.bpar", ios::binary);
+void Hitran::writeHitPar(const char *filename) {
+    ofstream fout(filename, ios::binary);
     for( auto hl : hitpar)
         fout.write( (char*)&hl,sizeof(HitranLine));
     fout.close();
 }
-void Hitran::readHitPar(vector<HitranLine> &data) {
-    ifstream fin("HITRAN08.bpar", ios::binary);
+void Hitran::readHitPar(const char *filename, vector<HitranLine> &data) {
+    ifstream fin(filename, ios::binary);
     HitranLine thl;
     while( !fin.eof() ) {
         fin.read((char*)&thl,sizeof(HitranLine));

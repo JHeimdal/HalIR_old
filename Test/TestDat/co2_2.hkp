@@ -1,15 +1,15 @@
-MALT5.21 10-Apr-07      Run 04/06/2017  22:30
+MALT5.21 10-Apr-07      Run 07/08/2017  17:26
  
 Fitfile                       
-Input                        co2.prm
+Input                        co2_2.prm
 Comment                      Clean air, 1000mb 30C, 26m                                      
-Output                       C:\Users\jimmy\Documents\MTest\co2.*
+Output                       C:\Users\jimmy\Documents\MTest\co2_2.*
 Bgndfile                     
  
-Output region +/- extension    2199.999       2450.000          0.999
-Full calculation region        2193.927       2456.071
-Grid (high, low)               0.001000       0.001000
-Npts (high, low, out)            262144         262144         250002
+Output region +/- extension    1299.995       1400.000          0.997
+Full calculation region        1269.144       1430.841
+Grid (high, low)               0.009869       0.009869
+Npts (high, low, out)             16384          16384          10134
 Apodisation, fit resolution      Boxcar          0.020
 Init_shift, SNR                   0.000             0.
 FOV, eff. apod.                   3.000          0.000
@@ -19,9 +19,9 @@ pressure shift, FOVshift              T              F
 Voigt vary, width, cutoff           0.0          200.0        0.0E+00
  
 Layer 1: Sample         
-P/mb, T/K, path/m               100.000   303.160     0.250
+P/mb, T/K, path/m              1000.000   303.000     3.250
 broad, isoscale                   0.000         0
 Mol   Iso       vmr    #lines    #Voigt     Linelist                        sec
-CO2     0  1.00E-04     40053     36494     c:\HITRAN\HITRAN08.par         4.59
+CO2     0  2.10E-03      2489      2263     c:\HITRAN\HITRAN08.par         2.70
  
  

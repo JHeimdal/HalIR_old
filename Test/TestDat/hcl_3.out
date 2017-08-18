@@ -1,0 +1,31 @@
+MALT5.21 10-Apr-07      Run 07/08/2017  17:26
+ 
+Fitfile                       
+Input                        hcl_3.prm
+Comment                      Clean air, 1000mb 30C, 26m                                      
+Output                       C:\Users\jimmy\Documents\MTest\hcl_3.*
+Bgndfile                     
+ 
+Output region +/- extension    2649.998       3150.003          0.997
+Full calculation region        2576.600       3223.390
+Grid (high, low)               0.009869       0.009869
+Npts (high, low, out)             65536          65536          50664
+Apodisation, fit resolution      Boxcar          0.060
+Init_shift, SNR                   0.000             0.
+FOV, eff. apod.                   3.000          0.000
+phase, misalignment               0.000          0.000
+sym1, sym2                        0.000          0.000
+pressure shift, FOVshift              T              F
+Voigt vary, width, cutoff           0.0          200.0        0.0E+00
+ 
+Layer 1: Sample         
+P/mb, T/K, path/m              1000.000   303.000     3.000
+broad, isoscale                   0.000         0
+Mol   Iso       vmr    #lines    #Voigt     Linelist                        sec
+HCl     0  1.00E-05        89        76     c:\HITRAN\HITRAN08.par         0.01
+ 
+ 
+ Written hcl_3_Lay1_HCl.spc
+ Written hcl_3.spc, Transmission spectrum 
+ 
+MALT5.21 10-Apr-07 finished 

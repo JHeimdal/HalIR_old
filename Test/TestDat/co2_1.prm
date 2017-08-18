@@ -1,0 +1,52 @@
+!Demo MALT5 input file
+!=====================
+!All lines beginning with ! are comments and ignored
+!Comment
+    'Clean air, 1000mb 30C, 26m'
+!Fitfile, reffile
+	''
+!Outfiles
+    ''
+!Abscof file
+    ''
+!Linelist, type
+    'c:\HITRAN\HITRAN08.par'   'c:\HITRAN\hitran.dat'
+!Scratch directory path
+    ''
+!
+!   #iter
+    0
+!
+!   low     high    ext     outspacing  SNR
+    600.0    700.0    1.     0.0         0
+!
+!   Ytype   #layers
+    1       1
+!Layer 1
+!-------
+!   type	Press   unit    fit   Temp    unit    fit   Path    unit    broad   isoscale
+    1		1000.0     mb      f     303.0     K       f     0.025     m       0       0
+!   #malt components    # library spectra
+    1                   0
+!
+!Loop n_comp times
+!   comp   amount  unit     linefile    type    fit     display
+    2 1.1     mb       ''          ''       t	      t
+!
+ 
+!Instrument/ILS
+!==============
+!   polynomial (# terms, initial values)
+    2       1.0     0.0     0.0     0.0
+!   shift   resoln  apod
+    -0.0    0.02   1
+    t       f
+!   fov     fap     phase   sym1    sym2    malign  PBadj   zoffset
+    3.0    0.0     0.0     0.0     0.0     0.0     0.0     0.0
+    t       f       t       f       f       f       f       f
+!   Channel spectra
+!   period  phase   amplitude
+	0.0		0.0		0.0
+      f           f           f
+	0.0		0.0		0.0
+      f           f           f

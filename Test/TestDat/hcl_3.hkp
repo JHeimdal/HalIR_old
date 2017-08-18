@@ -1,16 +1,16 @@
-MALT5.21 10-Apr-07      Run 05/06/2017  06:26
+MALT5.21 10-Apr-07      Run 07/08/2017  17:26
  
 Fitfile                       
-Input                        ch4.prm
+Input                        hcl_3.prm
 Comment                      Clean air, 1000mb 30C, 26m                                      
-Output                       C:\Users\jimmy\Documents\MTest\ch4.*
+Output                       C:\Users\jimmy\Documents\MTest\hcl_3.*
 Bgndfile                     
  
-Output region +/- extension    2849.998       3200.000          0.997
-Full calculation region        2701.604       3348.394
+Output region +/- extension    2649.998       3150.003          0.997
+Full calculation region        2576.600       3223.390
 Grid (high, low)               0.009869       0.009869
-Npts (high, low, out)             65536          65536          35465
-Apodisation, fit resolution      Boxcar          0.050
+Npts (high, low, out)             65536          65536          50664
+Apodisation, fit resolution      Boxcar          0.060
 Init_shift, SNR                   0.000             0.
 FOV, eff. apod.                   3.000          0.000
 phase, misalignment               0.000          0.000
@@ -19,9 +19,9 @@ pressure shift, FOVshift              T              F
 Voigt vary, width, cutoff           0.0          200.0        0.0E+00
  
 Layer 1: Sample         
-P/mb, T/K, path/m              1000.000   303.160     0.250
+P/mb, T/K, path/m              1000.000   303.000     3.000
 broad, isoscale                   0.000         0
 Mol   Iso       vmr    #lines    #Voigt     Linelist                        sec
-CH4     0  1.00E-03     44067     38864     c:\HITRAN\HITRAN08.par         5.83
+HCl     0  1.00E-05        89        76     c:\HITRAN\HITRAN08.par         0.01
  
  

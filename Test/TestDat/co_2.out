@@ -1,0 +1,31 @@
+MALT5.21 10-Apr-07      Run 07/08/2017  17:26
+ 
+Fitfile                       
+Input                        co_2.prm
+Comment                      Clean air, 1000mb 30C, 26m                                      
+Output                       C:\Users\jimmy\Documents\MTest\co_2.*
+Bgndfile                     
+ 
+Output region +/- extension    2039.990       2045.004          0.997
+Full calculation region        2037.444       2047.550
+Grid (high, low)               0.009869       0.009869
+Npts (high, low, out)              1024           1024            509
+Apodisation, fit resolution      Boxcar          0.100
+Init_shift, SNR                   0.000             0.
+FOV, eff. apod.                   3.000          0.000
+phase, misalignment               0.000          0.000
+sym1, sym2                        0.000          0.000
+pressure shift, FOVshift              T              F
+Voigt vary, width, cutoff           0.0          200.0        0.0E+00
+ 
+Layer 1: Sample         
+P/mb, T/K, path/m              1000.000   303.000     0.025
+broad, isoscale                   0.000         0
+Mol   Iso       vmr    #lines    #Voigt     Linelist                        sec
+CO      0  3.30E-03        18        17     c:\HITRAN\HITRAN08.par         0.00
+ 
+ 
+ Written co_2_Lay1_CO.spc
+ Written co_2.spc, Transmission spectrum 
+ 
+MALT5.21 10-Apr-07 finished 

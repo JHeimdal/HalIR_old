@@ -8,4 +8,6 @@ include_directories( ${ARMADILLO_INCLUDE_DIRS} )
 set( SRCS hitran.cpp halirSpec.cpp halir.cpp Faddeeva.cpp )
 #libraries( ${ARMSILLO_LIBRARIES} )
 
-add_library(HalIR ${SRCS})
+add_library(HalIR SHARED ${SRCS})
+
+install( TARGETS HalIR DESTINATION .mlib)

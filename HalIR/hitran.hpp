@@ -134,8 +134,8 @@ struct HitranLine {
 } hl;
 
 std::vector<HitranLine> hitpar;
-void writeHitPar();
-void readHitPar(std::vector<HitranLine> &data);
+void writeHitPar(const char *filename);
+void readHitPar(const char *filename, std::vector<HitranLine> &data);
 public:
     Hitran();
     molparm* create_molparm(const int *molecules, const int &nmolec,const double &conc,const double &low,const double &high);
@@ -146,9 +146,10 @@ public:
             //std::cout << hl.molec_num << " " << hl.isotp_num << " " << hl.trans_mu << "\n";
     }
     bool save_molparm(const molparm *data);
+    /*
     void makeHitPar() {
         writeHitPar();
-    }
+    }*/
     std::vector<int> GetNisotp(std::string &molec);
     std::vector<int> GetMolecN(std::string &molec);
     int GetMolecN(int isotp);

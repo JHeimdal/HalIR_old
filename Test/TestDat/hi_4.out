@@ -1,0 +1,31 @@
+MALT5.21 10-Apr-07      Run 07/08/2017  17:26
+ 
+Fitfile                       
+Input                        hi_4.prm
+Comment                      Clean air, 1000mb 30C, 26m                                      
+Output                       C:\Users\jimmy\Documents\MTest\hi_4.*
+Bgndfile                     
+ 
+Output region +/- extension    2291.999       2308.002          0.999
+Full calculation region        2289.894       2310.106
+Grid (high, low)               0.002467       0.002467
+Npts (high, low, out)              8192           8192           6487
+Apodisation, fit resolution      Boxcar          0.020
+Init_shift, SNR                   0.000             0.
+FOV, eff. apod.                   3.000          0.000
+phase, misalignment               0.000          0.000
+sym1, sym2                        0.000          0.000
+pressure shift, FOVshift              T              F
+Voigt vary, width, cutoff           0.0          200.0        0.0E+00
+ 
+Layer 1: Sample         
+P/mb, T/K, path/m               250.000   303.000     3.000
+broad, isoscale                   0.000         0
+Mol   Iso       vmr    #lines    #Voigt     Linelist                        sec
+HI-1    1  8.01E-03        15         1     c:\HITRAN\HITRAN08.par         0.00
+ 
+ 
+ Written hi_4_Lay1_HI-1.spc
+ Written hi_4.spc, Transmission spectrum 
+ 
+MALT5.21 10-Apr-07 finished 
