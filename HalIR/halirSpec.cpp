@@ -100,10 +100,8 @@ HalIRSpec::HalIRSpec(std::string &infile)
     // Calculate mass path
     // Prep the rundata
     yunit = 0;
-    resol = 0;
     apod  = 0;
     method= 0;
-    fov   = 0;
 
     /* Check for a lines files */
     int off=0;int c=0;
@@ -156,6 +154,7 @@ ostream &operator<< (ostream &os, HalIRSpec &parm)
     os << "RootWorkDir: " << parm.rootdir << endl;
     os << "envi:\t" << parm.temp <<"\t"<< parm.press <<"\t"<< parm.pathl << endl;
     os << "uenvi:\t" << "K\tatm\tcm" << endl;
+    os << "ILS:\t" << parm.resol << "\t" << parm.fov << endl;
     os << "molec: ";
     for( int i=0;i<parm.tmolec.size();i++ )
         os << parm.tmolec[i] << " ";

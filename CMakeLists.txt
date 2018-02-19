@@ -6,8 +6,8 @@ ADD_DEFINITIONS( -mavx2 -fopenmp -ftree-vectorize -O3 -std=c++11)
 #ADD_DEFINITIONS( -O2 -std=c++11)
 project(HalIR)
 
-set(BOOST_ROOT /usr/local/boost)
-set(Boost_NO_BOOST_CMAKE ON)
+#set(BOOST_ROOT /usr/local/boost)
+#set(Boost_NO_BOOST_CMAKE ON)
 # Add directories containing libraries
 add_subdirectory( SpecSac )
 add_subdirectory( HalIR )

@@ -16,8 +16,10 @@ class HalIR : public HalIRSpec
     double Temp;
     double Press;
     double PathL;
+    float Resol;
     double q;
     const double pi=3.14159265358979;
+    const double sqrt_pi=sqrt(pi);
     const double hc=1.98644521E-16; // erg*cm
     const double c_sq=8.987551787E20; // cm^2*s^-2
     const double kb=1.3806503E-16; // erg/K
@@ -37,6 +39,17 @@ class HalIR : public HalIRSpec
     arma::fvec x;
     arma::fvec mu;
     TIPS_2011 tips;
+    struct SINC {
+        float g;
+        float pi = 3.14159265358979;
+        SINC(double vg) : g(vg) {}
+        float operator() (float &v) {
+            if ( v==0 )
+                return 2./g;
+            else
+                return 2./g*sin(2*pi*v/g)/(2*pi*v/g);
+        }
+    };
     /* This is function for COMMENT */
     inline double gfunct(double v,double vi) {
         return (v*tanh(hc*v)/(2*kb*Temp))/(vi*tanh((hc*vi)/(2*kb*Temp)));

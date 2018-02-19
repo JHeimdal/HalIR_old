@@ -1,12 +1,17 @@
 #!/usr/bin/env python3.6
 
-import sys 
-from subprocess import check_output as call
-from spc import SPC
-from halirtest import molecs,halirrunfile
+from subprocess import run, PIPE
+from halirtest import molecs, halirrunfile
 
 
-if __name__=='__main__':
-	for m in molecs:
-		print(halirrunfile.format(**m))
-		
+if __name__ == '__main__':
+    for m in molecs:
+        print("Running: " + m['name'])
+        with open(m['name'] + '.inp', 'w') as outf:
+            outf.write(halirrunfile.format(**m))
+        runlog = run(['mytest', '-i', m['name'] + '.inp'],
+                     stdout=PIPE, stderr=PIPE)
+        with open(m['name'] + '.out', 'wb') as outf:
+            outf.write(runlog.stderr)
+        with open(m['name'] + '.xy', 'wb') as outf:
+            outf.write(runlog.stdout)

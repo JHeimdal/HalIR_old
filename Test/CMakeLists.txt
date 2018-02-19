@@ -16,7 +16,9 @@ message(STATUS ${ARMADILLO_LIBRARIES})
 target_link_libraries(mytest ${Boost_LIBRARIES} ${ARMADILLO_LIBRARIES} SpecSac HalIR )
 
 
-install(TARGETS mytest DESTINATION .bin)
-install(DIRECTORY TestDat DESTINATION ${PROJECT_BINARY_DIR})
+install( TARGETS mytest DESTINATION .bin )
+install( DIRECTORY TestDat DESTINATION ${PROJECT_BINARY_DIR}/Test )
+install( PROGRAMS genMtest.py halirtest.py run_halir_test.py spc.py plotf.py
+         DESTINATION ${PROJECT_BINARY_DIR}/Test )
 #message( ${PROJECT_SOURCE_DIR} )
 #message( ${PROJECT_BINARY_DIR} )
