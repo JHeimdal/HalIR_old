@@ -1,6 +1,5 @@
 #include <map>
 
-
 class TIPS_2011
 {
 private:

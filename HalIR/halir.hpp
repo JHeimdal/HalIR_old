@@ -18,17 +18,20 @@ class HalIR : public HalIRSpec
     double PathL;
     float Resol;
     double q;
+    const double ln2=log(2);
+    const double sqrt_ln2=sqrt(ln2);
     const double pi=3.14159265358979;
     const double sqrt_pi=sqrt(pi);
     const double hc=1.98644521E-16; // erg*cm
     const double c_sq=8.987551787E20; // cm^2*s^-2
     const double kb=1.3806503E-16; // erg/K
     const double atmmass=1.6605E-24; // g
+    const double NL=2.686780524E+19; // Loschmid's number cm^-3
     //static const double hc=1.98644521E-25; // J*m
-    //const double c_sq=8.987551787E16; // m^2*s^-2
-    //const double kb=1.3806503E-23; // J/K
+    const double c_sqs=8.987551787E16; // m^2*s^-2
+    const double kbs=1.3806503E-23; // J/K
     //const double atmmass=1.6605E-27; // kg
-    const double Na=6.022E23;
+    const double Na=6.02214086E23;
     bool simulate;
     bool verbose;
     // Armadillo init
