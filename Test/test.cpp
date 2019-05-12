@@ -101,7 +101,7 @@ int main(int argc,char **argv)
         //spectras[0]->write(fname);
 	    //cout << "halir_init: Fine\n";
         start = chrono::system_clock::now();
-	    halir.runDawsonVoigt();
+	      halir.runDawsonVoigt();
         end = chrono::system_clock::now();
         chrono::duration<double> elapsed_seconds = end-start;
         cerr << "elapsed time: " << elapsed_seconds.count() << "s\n";

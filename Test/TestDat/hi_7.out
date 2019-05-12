@@ -1,4 +1,4 @@
-MALT5.21 10-Apr-07      Run 07/08/2017  17:26
+MALT5.21 10-Apr-07      Run 12/05/2019  06:32
  
 Fitfile                       
 Input                        hi_7.prm
@@ -12,7 +12,7 @@ Grid (high, low)               0.001000       0.001000
 Npts (high, low, out)             32768          32768          16002
 Apodisation, fit resolution      Boxcar          0.005
 Init_shift, SNR                   0.000             0.
-FOV, eff. apod.                   3.000          0.000
+FOV, eff. apod.                   0.100          0.000
 phase, misalignment               0.000          0.000
 sym1, sym2                        0.000          0.000
 pressure shift, FOVshift              T              F

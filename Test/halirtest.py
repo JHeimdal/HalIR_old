@@ -1,3 +1,5 @@
+# COMMENT This is some testcases for HalIR
+#           Name of test    Molecule       isotopic
 molecs = [{'name': 'co_1',  'molec': 'CO', 'isotp': 0, 'comp': 5, 'intv': [2000., 2250.], 'c': 1.3, 'res': 0.1, 'T': 303., 'P': 1000., 'l': 0.025},
           {'name': 'co_2',  'molec': 'CO', 'isotp': 0, 'comp': 5, 'intv': [2040., 2045.], 'c': 3.3, 'res': 0.1, 'T': 303., 'P': 1000., 'l': 0.025},
           {'name': 'co_c1', 'molec': 'CO', 'isotp': 0, 'comp': 5, 'intv': [2000., 2245.], 'c': 0.02, 'res': 0.1, 'T': 303., 'P': 1000., 'l': 3.00},
@@ -6,19 +8,19 @@ molecs = [{'name': 'co_1',  'molec': 'CO', 'isotp': 0, 'comp': 5, 'intv': [2000.
           {'name': 'co_c4', 'molec': 'CO', 'isotp': 0, 'comp': 5, 'intv': [2000., 2245.], 'c': 0.08, 'res': 0.1, 'T': 303., 'P': 1000., 'l': 3.00},
           {'name': 'co_c5', 'molec': 'CO', 'isotp': 0, 'comp': 5, 'intv': [2000., 2245.], 'c': 0.10, 'res': 0.1, 'T': 303., 'P': 1000., 'l': 3.00},
           {'name': 'co_c6', 'molec': 'CO', 'isotp': 0, 'comp': 5, 'intv': [2000., 2245.], 'c': 0.15, 'res': 0.1, 'T': 303., 'P': 1000., 'l': 3.00},
-          {'name': 'hi_1',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.02, 'T': 303., 'P': 1000., 'l': 3.00},
-          {'name': 'hi_2',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.02, 'T': 303., 'P': 750., 'l': 3.00},
-          {'name': 'hi_3',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.02, 'T': 303., 'P': 500., 'l': 3.00},
-          {'name': 'hi_4',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.02, 'T': 303., 'P': 250., 'l': 3.00},
-          {'name': 'hi_5',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.005, 'T': 303., 'P': 100., 'l': 3.00},
-          {'name': 'hi_6',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.005, 'T': 303., 'P': 50., 'l': 3.00},
-          {'name': 'hi_7',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.005, 'T': 303., 'P': 15., 'l': 3.00},
-          {'name': 'hi_8',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.001, 'T': 303., 'P': 2., 'l': 3.00},
-          {'name': 'hcl_1', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.02, 'T': 303., 'P': 1000., 'l': 3.00},
-          {'name': 'hcl_2', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.04, 'T': 303., 'P': 1000., 'l': 3.00},
-          {'name': 'hcl_3', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.06, 'T': 303., 'P': 1000., 'l': 3.00},
-          {'name': 'hcl_4', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.08, 'T': 303., 'P': 1000., 'l': 3.00},
-          {'name': 'hcl_5', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.1, 'T': 303., 'P': 1000., 'l': 3.00},
+          # {'name': 'hi_1',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.02, 'T': 303., 'P': 1000., 'l': 3.00},
+          # {'name': 'hi_2',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.02, 'T': 303., 'P': 750., 'l': 3.00},
+          # {'name': 'hi_3',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.02, 'T': 303., 'P': 500., 'l': 3.00},
+          # {'name': 'hi_4',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.02, 'T': 303., 'P': 250., 'l': 3.00},
+          # {'name': 'hi_5',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.005, 'T': 303., 'P': 100., 'l': 3.00},
+          # {'name': 'hi_6',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.005, 'T': 303., 'P': 50., 'l': 3.00},
+          # {'name': 'hi_7',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.005, 'T': 303., 'P': 15., 'l': 3.00},
+          # {'name': 'hi_8',  'molec': 'HI', 'isotp': 0, 'comp': 1701, 'intv': [2292., 2308.], 'c': 2.0, 'res': 0.001, 'T': 303., 'P': 2., 'l': 3.00},
+          # {'name': 'hcl_1', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.02, 'T': 303., 'P': 1000., 'l': 3.00},
+          # {'name': 'hcl_2', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.04, 'T': 303., 'P': 1000., 'l': 3.00},
+          # {'name': 'hcl_3', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.06, 'T': 303., 'P': 1000., 'l': 3.00},
+          # {'name': 'hcl_4', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.08, 'T': 303., 'P': 1000., 'l': 3.00},
+          # {'name': 'hcl_5', 'molec': 'HCl', 'isotp': 0, 'comp': 15, 'intv': [2650., 3150.], 'c': 0.01, 'res': 0.1, 'T': 303., 'P': 1000., 'l': 3.00},
           {'name': 'co2_1', 'molec': 'CO2', 'isotp': 0, 'comp': 2, 'intv': [600.,  700.], 'c': 1.1, 'res': 0.02, 'T': 303., 'P': 1000., 'l': 0.025},
           {'name': 'co2_2', 'molec': 'CO2', 'isotp': 0, 'comp': 2, 'intv': [1300., 1400.], 'c': 2.1, 'res': 0.02, 'T': 303., 'P': 1000., 'l': 3.25},
           {'name': 'co2_3', 'molec': 'CO2', 'isotp': 0, 'comp': 2, 'intv': [2300., 2500.], 'c': 1.1, 'res': 0.02, 'T': 303., 'P': 1000., 'l': 0.025}]
@@ -31,7 +33,7 @@ envi: {T} {P} {l}\n\
 uenvi: K mb m\n\
 # ILS Instrument line shape\n\
 # resolution fov apodization\n\
-ILS: {res} 6.5\n\
+ILS: {res} 3.0\n\
 \n\
 # Spectral Window\n\
 # low limit, high limit, ext units in cm^-1\n\
