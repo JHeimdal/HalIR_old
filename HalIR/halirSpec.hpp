@@ -95,7 +95,7 @@ protected:
     std::string inputfile;
 public:
     HalIRSpec();
-    HalIRSpec(std::string &infile);
+    HalIRSpec(std::string &infile, bool file_name=true);
     //HalIRSpec(const HalIRSpec &spec);
     virtual ~HalIRSpec();
     friend std::ostream &operator<< (std::ostream &os,HalIRSpec &parm);

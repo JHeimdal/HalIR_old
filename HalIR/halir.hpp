@@ -18,7 +18,7 @@ class HalIR : public HalIRSpec
     double PathL;
     float Resol;
     double q;
-    
+
     const double ln2=log(2);
     const double sqrt_ln2=sqrt(ln2);
     const double pi=3.14159265358979;
@@ -76,6 +76,6 @@ class HalIR : public HalIRSpec
     }
  public:
     HalIR(const HalIRSpec &spec);
-    HalIR(std::string &parm_in);
+    HalIR(std::string &parm_in, bool file_name);
     void runDawsonVoigt();
 };

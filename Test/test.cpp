@@ -94,7 +94,17 @@ int main(int argc,char **argv)
         //HalIRSpec halir_parm(parm_in);
 	    //cout << halir_parm;
         parm_in = rootdir + "/" + parm_in;
-        HalIR halir(parm_in);
+        string halir_runstr("\
+        envi: 303 1000 0.025\n\
+        uenvi: K mb m\n\
+        ILS: 0.02 3.0\n\
+        swin:  600 700 0\n\
+        molec:  CO2\n\
+        isotp:  0\n\
+        conc:   1.1\n\
+        uconc:  mb\n\
+        files:\n");
+        HalIR halir(halir_runstr, false);
         cerr << halir << endl;
         //spectras.add(files[0]);
         //string fname="co_2.spc";

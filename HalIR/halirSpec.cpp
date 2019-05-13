@@ -33,7 +33,7 @@ HalIRSpec::HalIRSpec()
     set_maps();
 }
 
-HalIRSpec::HalIRSpec(std::string &infile)
+HalIRSpec::HalIRSpec(std::string &infile, bool file_name)
 {
     /********************
      *     Header       *
@@ -58,14 +58,21 @@ HalIRSpec::HalIRSpec(std::string &infile)
     double ctmp;
     int uctmp;
     double ugtmp;
-    check_file(infile);
-    std::fstream infil;
-    infil.open(infile.c_str(),ios_base::in);
-    if (!infil.is_open()) {
-        std::cerr << "Cant open file\n";
-        exit(98);
+    // Is it a filename or a string representing the input
+    if ( file_name==true ) {
+      check_file(infile);
+      std::fstream infil;
+      infil.open(infile.c_str(),ios_base::in);
+      if (!infil.is_open()) {
+          std::cerr << "Cant open file\n";
+          exit(98);
+      }
+      infil >> *this;
+    } else {
+      std::stringstream infil;
+      infil.str(infile);
+      infil >> *this;
     }
-    infil >> *this;
     // Check the sanity of the input tmolec tconc tuconc and tisotp has to be the same size.
     if ( tmolec.size() != tuconc.size() || tmolec.size() != tisotp.size() ) {
         cerr << ">>> Input error: molec, isotp, conc, and uconc must have the same size <<<\n" << endl;

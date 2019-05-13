@@ -15,9 +15,9 @@ HalIR::HalIR(const HalIRSpec &spec) : HalIRSpec(spec)
   PathL=getPathl();
   Resol=getResol();
   simulate=isSimulation();
-  if ( simulate ) { cout << "This is a simulation" << endl;}
+  // if ( simulate ) { cout << "This is a simulation" << endl;}
 }
-HalIR::HalIR(string &parm_in) : HalIRSpec(parm_in)
+HalIR::HalIR(string &parm_in, bool file_name) : HalIRSpec(parm_in, file_name)
 {
     // Init HalIRSpec
     Temp=getTemp();
@@ -81,7 +81,7 @@ void HalIR::runDawsonVoigt()
     fvec tran = conv(y,split,"same");
     for(unsigned i=0;i<tran.size();i++)
         cout << fixed << setprecision(6) << mu[i] << " " << scientific << exp(-tran[i]) << endl;
-        
+
     cc++;
   }
   /*
