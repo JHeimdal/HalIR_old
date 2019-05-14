@@ -104,7 +104,7 @@ int main(int argc,char **argv)
         conc:   1.1\n\
         uconc:  mb\n\
         files:\n");
-        HalIR halir(halir_runstr, false);
+        HalIR halir(halir_runstr);
         cerr << halir << endl;
         //spectras.add(files[0]);
         //string fname="co_2.spc";

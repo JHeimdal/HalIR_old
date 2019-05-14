@@ -17,7 +17,7 @@ HalIR::HalIR(const HalIRSpec &spec) : HalIRSpec(spec)
   simulate=isSimulation();
   // if ( simulate ) { cout << "This is a simulation" << endl;}
 }
-HalIR::HalIR(string &parm_in, bool file_name) : HalIRSpec(parm_in, file_name)
+HalIR::HalIR(string parm_in) : HalIRSpec(parm_in)
 {
     // Init HalIRSpec
     Temp=getTemp();

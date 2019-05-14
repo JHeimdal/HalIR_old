@@ -76,6 +76,6 @@ class HalIR : public HalIRSpec
     }
  public:
     HalIR(const HalIRSpec &spec);
-    HalIR(std::string &parm_in, bool file_name);
+    HalIR(std::string parm_in);
     void runDawsonVoigt();
 };
