@@ -1,4 +1,4 @@
-#include "halir.hpp"
+#include "../HalIR/halir.hpp"
 #include <boost/python.hpp>
 
 BOOST_PYTHON_MODULE(halir_pylib)

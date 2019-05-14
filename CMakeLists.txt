@@ -11,6 +11,7 @@ project(HalIR)
 # Add directories containing libraries
 add_subdirectory( SpecSac )
 add_subdirectory( HalIR )
+add_subdirectory( HalIR_PyLib )
 # Add directories that compile execiutables
 add_subdirectory( Test )
 
