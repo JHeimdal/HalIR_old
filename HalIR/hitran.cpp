@@ -50,7 +50,7 @@ Hitran::Hitran()
         }
         hitdat.isotp_Abun.push_back(atof(line.substr(38,10).c_str()));
         hitdat.molec_M.push_back(atoi(line.substr(48,3).c_str()));
-	    hitdat.molec_mass.emplace(molec_int,atoi(line.substr(48,3).c_str()));
+	      hitdat.molec_mass.emplace(molec_int,atoi(line.substr(48,3).c_str()));
         hitdat.part_func.push_back(atof(line.substr(52,3).c_str()));
         hitdat.num_vib.push_back(atoi(line.substr(57,2).c_str()));
 	    continue;

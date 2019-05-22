@@ -104,8 +104,8 @@ struct HitranLine {
   char   l_vib_quant[16];// Lower vibrational quanta
   char   u_loc_quant[16];// Upper local quanta
   char   l_loc_quant[16];// Lower local quanta
-  int    err_code;	 // Error codes
-  int    ref_code;	 // Reference codes
+  char   err_code[6];	 // Error codes
+  char   ref_code[12];	 // Reference codes
   char   line_mix[2];	 // Flag for line mixing
   float  u_stat_w;	 // Upper statistical weight
   float  l_stat_w;	 // Lower statistical weight
@@ -141,7 +141,7 @@ public:
     molparm* create_molparm(const int *molecules, const int &nmolec,const double &conc,const double &low,const double &high);
     void print(std::vector<HitranLine> &data) {
         for( auto hl : data)
-            //printf("%2d%1d%12.6f%10.3E%10.3E%5f%5f%10f%4f%8f%15s%15s%15s%15s%6d%12d%1s%7f%7f\n",hl.molec_num,hl.isotp_num,hl.trans_mu,hl.line_I,hl.einstein_A,hl.air_B,hl.self_B,hl.low_state_en,hl.temp_air_B,hl.pressure_S,&hl.u_vib_quant,&hl.l_vib_quant,hl.u_loc_quant,hl.l_loc_quant,hl.err_code,hl.ref_code,hl.line_mix,hl.u_stat_w,hl.l_stat_w);
+            //printf("%2d%1d%12.6f%10.3E%10.3E%5f%5f%10f%4f%8f%15s%15s%15s%15s%6s%12s%1s%7f%7f\n",hl.molec_num,hl.isotp_num,hl.trans_mu,hl.line_I,hl.einstein_A,hl.air_B,hl.self_B,hl.low_state_en,hl.temp_air_B,hl.pressure_S,&hl.u_vib_quant,&hl.l_vib_quant,hl.u_loc_quant,hl.l_loc_quant,hl.err_code,hl.ref_code,hl.line_mix,hl.u_stat_w,hl.l_stat_w);
             std::cout  << hl.molec_num << hl.isotp_num << " " << std::left << std::fixed << std::setw(12) << std::setprecision(6) << hl.trans_mu << std::scientific << " " << hl.line_I << "\n";
             //std::cout << hl.molec_num << " " << hl.isotp_num << " " << hl.trans_mu << "\n";
     }

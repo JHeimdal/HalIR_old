@@ -23,7 +23,10 @@ class _runHAPI_Fit(QThread):
         self.components = sampleDict['comp']
 
     def run(self):
+        # Download and create HITRAN data for HalIR
         hitranDownload(self.projDict, self.sampleDict)
+        # Start a HalIR session
+        self.halir = HalIR()
         self.done.emit()
 
 
