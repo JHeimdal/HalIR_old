@@ -13,6 +13,6 @@ add_subdirectory( SpecSac )
 add_subdirectory( HalIR )
 add_subdirectory( HalIR_PyLib )
 # Add directories that compile execiutables
-add_subdirectory( Test )
+# add_subdirectory( Test )
 
 set(CMAKE_INSTALL_PREFIX /home/jimmy/ )

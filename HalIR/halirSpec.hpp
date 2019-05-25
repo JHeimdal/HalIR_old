@@ -8,7 +8,7 @@
 
 
 #include "hitran.hpp"
-#include "../SpecSac/specsac.hpp"
+// #include "../SpecSac/specsac.hpp"
 
 class HalIRSpec
 {
@@ -44,62 +44,43 @@ private:
     double F2K(double f_val) { return (f_val-32)*5/9+273.15; } // Converts Fahrenheit to Kelvin ( never put this in documentation )
     /* End of constants */
 
-    /* Data used for simulation     */
-    std::string upress;
-    std::string utemp;
-    std::string upathl;
-    std::string bg_file;
-    std::string title;
-    std::vector<std::string> molec;
-    std::vector<std::string> tmolec;
-    std::vector<std::string> uconc;
-    std::vector<std::string> tuconc;
-    std::vector<std::string> files;
-    std::vector<int> isotp;
-    std::vector<int> tisotp;
-    std::vector<int> nmolec;
-    std::vector<int> tnmolec;
-    std::vector<double> tconc;
-    std::vector<double> conc;
-    std::vector<double> ug;
-
-    double  high;
-    double  low;
-    double  press;
-    double  temp;
-    double  resol;
-    int     apod;
-    int     method;
-    double  fov;
-    double  ext;
-    double  pathl;
-    int     nmol;
-    int     yunit;
-    /* mebers for cheking and keeping check on input */
-    bool simulate;
-    bool has_bgfile;
-    std::map<std::string,double> conc_map;
-    std::map<std::string,double> press_map;
-    std::map<std::string,double> path_map;
-    void set_maps();
-    /* End simulation data*/
-    /* Information and functions for dealing with files */
+    struct Comp {
+      std::string molec;
+      std::string isotop;
+      std::string hpar;
+      float amount;
+      Comp(std::string &m, std::string &isotp, const std::string &path, float &v)
+        : molec(m), isotop(isotp), hpar(path), amount(v) {}
+    };
 
     void check_file(std::string &filename);
 
 protected:
     std::vector<molparm*> mparm;
     Hitran hitran;
-    SpecSac spectras;
-    std::string rootdir;
-    std::string inputfile;
+    std::vector<Comp> comp;
+    std::vector<std::string> pfiles;
+    std::string p_db;
+    std::string pdir;
+    std::string pcomments;
+    std::string bg_file;
+    std::string pname;
+    std::string ftype;
+    std::string apod;
+
+    float   ROI[2];
+    float   press;
+    float   temp;
+    float   res;
+    float   fov;
+    float   ext;
+    float   pathL;
 public:
     HalIRSpec();
-    HalIRSpec(std::string &infile, bool file_name=false);
+    HalIRSpec(std::string &infile);
     //HalIRSpec(const HalIRSpec &spec);
     virtual ~HalIRSpec();
-    friend std::ostream &operator<< (std::ostream &os,HalIRSpec &parm);
-    friend std::istream &operator>> (std::istream &in,HalIRSpec &parm);
+
     double getPress() {
       return press;
     }
@@ -107,15 +88,15 @@ public:
       return temp;
     }
     double getResol() {
-      return resol;
+      return res;
     }
     double getFov() {
       return fov;
     }
     double getPathl() {
-      return pathl;
+      return pathL;
     }
-    bool isSimulation() {
-      return simulate;
+    void printParm() {
+      std::cout << pcomments << std::endl;
     }
 };

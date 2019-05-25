@@ -51,8 +51,8 @@ Hitran::Hitran()
         hitdat.isotp_Abun.push_back(atof(line.substr(38,10).c_str()));
         hitdat.molec_M.push_back(atoi(line.substr(48,3).c_str()));
 	      hitdat.molec_mass.emplace(molec_int,atoi(line.substr(48,3).c_str()));
-        hitdat.part_func.push_back(atof(line.substr(52,3).c_str()));
-        hitdat.num_vib.push_back(atoi(line.substr(57,2).c_str()));
+        // hitdat.part_func.push_back(atof(line.substr(52,3).c_str()));
+        // hitdat.num_vib.push_back(atoi(line.substr(57,2).c_str()));
 	    continue;
     }
     in.close();
@@ -64,25 +64,25 @@ Hitran::Hitran()
         in.open(par_path);
         char ctmp[16];
         do {
-            in.get(ctmp,3); hl.molec_num=atoi(ctmp);
-            in.get(ctmp,2); hl.isotp_num=atoi(ctmp);
+            in.get(ctmp,3);  hl.molec_num=atoi(ctmp);
+            in.get(ctmp,2);  hl.isotp_num=atoi(ctmp);
             in.get(ctmp,13); hl.trans_mu=atof(ctmp);
             in.get(ctmp,11); hl.line_I=(float)atof(ctmp);
             in.get(ctmp,11); hl.einstein_A=(float)atof(ctmp);
-            in.get(ctmp,6); hl.air_B=(float)atof(ctmp);
-            in.get(ctmp,6); hl.self_B=(float)atof(ctmp);
+            in.get(ctmp,6);  hl.air_B=(float)atof(ctmp);
+            in.get(ctmp,6);  hl.self_B=(float)atof(ctmp);
             in.get(ctmp,11); hl.low_state_en=(float)atof(ctmp);
-            in.get(ctmp,5); hl.temp_air_B=(float)atof(ctmp);
-            in.get(ctmp,9); hl.pressure_S=(float)atof(ctmp);
+            in.get(ctmp,5);  hl.temp_air_B=(float)atof(ctmp);
+            in.get(ctmp,9);  hl.pressure_S=(float)atof(ctmp);
             in.get(ctmp,16); strcpy(hl.u_vib_quant, ctmp);
             in.get(ctmp,16); strcpy(hl.l_vib_quant, ctmp);
             in.get(ctmp,16); strcpy(hl.u_loc_quant, ctmp);
             in.get(ctmp,16); strcpy(hl.l_loc_quant, ctmp);
-            in.get(ctmp,7); hl.err_code=atoi(ctmp);
-            in.get(ctmp,13); hl.ref_code=atoi(ctmp);
-            in.get(ctmp,2); strcpy(hl.line_mix, ctmp);
-            in.get(ctmp,8); hl.u_stat_w=(float)atof(ctmp);
-            in.get(ctmp,8); hl.l_stat_w=(float)atof(ctmp);
+            in.get(ctmp,7);  strcpy(hl.err_code, ctmp);
+            in.get(ctmp,13); strcpy(hl.ref_code, ctmp);
+            in.get(ctmp,2);  strcpy(hl.line_mix, ctmp);
+            in.get(ctmp,8);  hl.u_stat_w=(float)atof(ctmp);
+            in.get(ctmp,8);  hl.l_stat_w=(float)atof(ctmp);
             in.ignore(8,'\n');
             hitpar.push_back(hl);
         } while( !in.eof() );
@@ -121,8 +121,8 @@ molparm* Hitran::create_molparm(const int *molecules, const int &nmolec,const do
         result->low_state_en[cc] = hl.low_state_en;
         result->temp_air_B[cc] = hl.temp_air_B  ;
         result->pressure_S[cc] = hl.pressure_S  ;
-        result->err_code[cc] = hl.err_code    ;
-        result->ref_code[cc] = hl.ref_code    ;
+        // result->err_code[cc] = hl.err_code    ;
+        // result->ref_code[cc] = hl.ref_code    ;
         result->u_stat_w[cc] = hl.u_stat_w    ;
         result->l_stat_w[cc] = hl.l_stat_w    ;
         cc++;

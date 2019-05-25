@@ -18,3 +18,5 @@ target_link_libraries(halir_pylib ${ARMADILLO_LIBRARIES} ${OpenMP_CXX_FLAGS} ${B
 
 set_target_properties(halir_pylib PROPERTIES SUFFIX .so)
 set_target_properties(halir_pylib PROPERTIES PREFIX "")
+
+install( TARGETS halir_pylib DESTINATION .local/lib/python3.5/site-packages/ )

@@ -57,8 +57,8 @@ void initMolparm(unsigned size, molparm *mp) {
       //mp->l_vib_quant = new char[size][16];
       //mp->u_loc_quant = new char[size][16];
       //mp->l_loc_quant = new char[size][16];
-      mp->err_code = new int[size];
-      mp->ref_code = new int [size];
+      //mp->err_code = new int[size];
+      //mp->ref_code = new int [size];
       //mp->line_mix = new char[size][2];
       mp->u_stat_w = new float[size];
       mp->l_stat_w = new float[size];
@@ -78,10 +78,10 @@ struct HitranDat {
     std::vector<double> isotp_Abun;	// Abundance
     std::vector<int>    molec_M;	// Molecular mass
     std::map<int,int>  molec_mass; // isotp->mass map
-    std::vector<double> part_func;	// Value of patrition function at 298 K
-    std::vector<int>    num_vib;	// Number of fundamental vibrations (v_n,degen)
-    std::vector<int> vib;		// fundamental vibration
-    std::vector<int> deg;		// degenerecy of vibration
+    //std::vector<double> part_func;	// Value of patrition function at 298 K
+    //std::vector<int>    num_vib;	// Number of fundamental vibrations (v_n,degen)
+    //std::vector<int> vib;		// fundamental vibration
+    //std::vector<int> deg;		// degenerecy of vibration
     int mole_num(const std::string& name) {
         //binary_find();
         int ret=1;

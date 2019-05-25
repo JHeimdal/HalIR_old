@@ -10,22 +10,11 @@ HalIR::HalIR(const HalIRSpec &spec) : HalIRSpec(spec)
 {
   // Read some values from spec
 
-  Temp=getTemp();
-  Press=getPress();
-  PathL=getPathl();
-  Resol=getResol();
-  simulate=isSimulation();
   // if ( simulate ) { cout << "This is a simulation" << endl;}
 }
 HalIR::HalIR(string parm_in) : HalIRSpec(parm_in)
 {
-    // Init HalIRSpec
-    Temp=getTemp();
-    Press=getPress();
-    PathL=getPathl();
-    Resol=getResol();
-    simulate=isSimulation();
-    //if ( simulate ) { cout << "This is a simulation" << endl;}
+  // Set some things
 }
 void HalIR::runDawsonVoigt()
 {
@@ -89,4 +78,13 @@ void HalIR::runDawsonVoigt()
       s->write();
   }
   */
+}
+void HalIR::createCalibrationSpectra()
+{
+  cout << "Lets create some spectra\n"
+       << "Press: " << press << " Temp: " << temp << endl
+       << "Ncomp: " << comp.size() << endl;
+  for( auto c : comp) {
+    cout << c.molec << " " << c.isotop << " " << c.hpar << " " << c.amount << endl;
+  }
 }

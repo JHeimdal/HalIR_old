@@ -74,8 +74,9 @@ class HalIR : public HalIRSpec
 		    while(rval<a) rval<<=1;
 		    return rval;
     }
+    void runDawsonVoigt();
  public:
     HalIR(const HalIRSpec &spec);
     HalIR(std::string parm_in);
-    void runDawsonVoigt();
+    void createCalibrationSpectra();
 };

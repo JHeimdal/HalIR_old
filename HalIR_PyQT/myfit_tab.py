@@ -26,7 +26,7 @@ class _runHAPI_Fit(QThread):
         # Download and create HITRAN data for HalIR
         hitranDownload(self.projDict, self.sampleDict)
         # Start a HalIR session
-        self.halir = HalIR()
+        self.halir = None
         self.done.emit()
 
 

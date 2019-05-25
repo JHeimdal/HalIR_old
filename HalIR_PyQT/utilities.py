@@ -44,6 +44,7 @@ def hitranDownload(projDict, sampleDict):
                 'local_upper_quanta', 'local_lower_quanta', 'ierr', 'iref',
                 'line_mixing_flag', 'gp', 'gpp']
 
+    struct_header = '6s12siffP'
     struct_hline = 'i'*2+'f'*8+'16s'*4+'6s'+'12s'+'2s'+'f'*2
 
     isoTxtToNum =\
@@ -61,19 +62,29 @@ def hitranDownload(projDict, sampleDict):
                 # print(self.molecToIsoNum[comp['molec']])
                 if comp['isotop'] == 'Natural':
                     molec = comp['molec']
+                    molecs = molecToIsoNum[molec]
                     hp.fetch_by_ids(molec,
-                                    molecToIsoNum[molec],
+                                    molecs,
                                     *sampleDict['ROI'])
+
                 else:
                     molec = comp['molec']
+                    molecs = isoTxtToNum[comp['isotop']]
                     hp.fetch_by_ids(molec,
-                                    isoTxtToNum[comp['isotop']],
+                                    molecs,
                                     *sampleDict['ROI'])
 
                 line_data = np.array(
                             hp.getColumns(molec, _entries)).transpose()
 
-                with open(os.path.join(wDir, molec+'_data.hpar'), 'wb') as outf:
+                with open(os.path.join(wDir, molec+'.hpar'), 'wb') as outf:
+                    bin = struct.pack(struct_header, molec.encode(),
+                                      comp['isotop'].encode(), len(molecs),
+                                      sampleDict['ROI'][0], sampleDict['ROI'][1], 0)
+                    outf.write(bin)
+                    print('i'*len(molecs), *molecs)
+                    bin = struct.pack('i'*len(molecs), *molecs)
+                    outf.write(bin)
                     for hl in line_data:
                         bin = struct.pack(struct_hline, int(hl[0]),
                                           int(hl[1]), float(hl[2]),
@@ -86,3 +97,8 @@ def hitranDownload(projDict, sampleDict):
                                           hl[15].encode(), hl[16].encode(),
                                           float(hl[17]), float(hl[18]))
                         outf.write(bin)
+
+
+def parseDictToHalIR(projDict, sampleDict):
+    """ Parse the projDict and sampleDict to HalIR input str """
+    pass
