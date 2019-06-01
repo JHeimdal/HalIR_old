@@ -31,10 +31,10 @@ class CompEntry(QtWidgets.QWidget):
         type(self)._counter -= 1
 
     def getValues(self):
-        # Check if there are values
+        # Convert amount to
         return self.ui.molec_val.currentText(),\
                self.ui.iso_val.currentText(),\
-               self.ui.amount_val.displayText(),\
+               float(self.ui.amount_val.displayText()),\
                self.ui.amount_unit.currentText()
 
     def onRemove(self):
@@ -60,7 +60,7 @@ class CompEntry(QtWidgets.QWidget):
         self.ui.molec_val.setCurrentText(data['molec'])
         self.setIso_val()
         self.ui.iso_val.setCurrentText(data['isotop'])
-        self.ui.amount_val.setText(str(data['amount']))
+        self.ui.amount_val.setText(str(data['vmr']))
         self.ui.amount_unit.setCurrentText(data['amountU'])
 
 
@@ -111,7 +111,7 @@ class MyProjectTab(QtWidgets.QWidget):
         sampleDict = dict(zip(sampleKey, self.getSampleVal()))
 
         # Build components dictonaries
-        compkey = ['molec', 'isotop', 'amount', 'amountU']
+        compkey = ['molec', 'isotop', 'vmr', 'amountU']
         components = []
         for comp in self.components:
             if not comp.isHidden():
@@ -190,18 +190,18 @@ class MyProjectTab(QtWidgets.QWidget):
 
     def getSampleVal(self):
         return float(self.ui.temp_val.text()),\
-                     self.ui.temp_unit.currentText(),\
-                     float(self.ui.press_val.text()),\
-                     self.ui.press_unit.currentText(),\
-                     float(self.ui.pathL_val.text()),\
-                     self.ui.pathL_unit.currentText(),\
-                     (float(self.ui.roiLow_val.text()),
-                      float(self.ui.roiHigh_val.text())),\
-                     float(self.ui.res_val.text()),\
-                     self.ui.apod_val.currentText(),\
-                     float(self.ui.fov_val.text()),\
-                     self.ui.ftype_val.currentText(),\
-                     self.ui.bgfile_val.text()
+               self.ui.temp_unit.currentText(),\
+               float(self.ui.press_val.text()),\
+               self.ui.press_unit.currentText(),\
+               float(self.ui.pathL_val.text()),\
+               self.ui.pathL_unit.currentText(),\
+               (float(self.ui.roiLow_val.text()),
+                float(self.ui.roiHigh_val.text())),\
+               float(self.ui.res_val.text()),\
+               self.ui.apod_val.currentText(),\
+               float(self.ui.fov_val.text()),\
+               self.ui.ftype_val.currentText(),\
+               self.ui.bgfile_val.text()
 
     def getDir(self):
         diag = QtWidgets.QFileDialog(self)

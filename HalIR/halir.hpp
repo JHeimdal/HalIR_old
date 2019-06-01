@@ -5,18 +5,25 @@
  ********************************************************/
 #define ARMA_DONT_USE_WRAPPER
 #include <armadillo>
+#include <boost/python.hpp>
+#include <boost/python/object.hpp>
+
+
 #include "tips.hpp"
 #include "cmath"
 #include "halirSpec.hpp"
+
+
+namespace bpy = boost::python;
 
 class HalIR : public HalIRSpec
 {
  private:
     //double *conc;
-    double Temp;
-    double Press;
-    double PathL;
-    float Resol;
+    //double Temp;
+    //double Press;
+    //double PathL;
+    //float Resol;
     double q;
 
     const double ln2=log(2);
@@ -55,15 +62,15 @@ class HalIR : public HalIRSpec
     };
     /* This is function for COMMENT */
     inline double gfunct(double v,double vi) {
-        return (v*tanh(hc*v)/(2*kb*Temp))/(vi*tanh((hc*vi)/(2*kb*Temp)));
+        return (v*tanh(hc*v)/(2*kb*temp))/(vi*tanh((hc*vi)/(2*kb*temp)));
     }
     inline float gfunct(float v,float vi) {
-        return (v*tanh(hc*v)/(2*kb*Temp))/(vi*tanh((hc*vi)/(2*kb*Temp)));
+        return (v*tanh(hc*v)/(2*kb*temp))/(vi*tanh((hc*vi)/(2*kb*temp)));
     }
     inline float qvr(float &line_I,int &molec_num,int &isotp_num,float &low_state_en,float &v0) {
-        float qvr = tips(molec_num,isotp_num,Temp);
+        float qvr = tips(molec_num,isotp_num,temp);
         float qvr_ref=tips(molec_num,isotp_num,296);
-        float Top = ( qvr_ref*exp(hc*low_state_en/(kb*Temp))*(1-exp(-hc*v0/(kb*Temp))));
+        float Top = ( qvr_ref*exp(hc*low_state_en/(kb*temp))*(1-exp(-hc*v0/(kb*temp))));
         float Bot = ( qvr*exp(hc*low_state_en/(kb*296))*(1-exp(-hc*v0/(kb*296))));
         return line_I*(Top/Bot);
     }
@@ -79,4 +86,6 @@ class HalIR : public HalIRSpec
     HalIR(const HalIRSpec &spec);
     HalIR(std::string parm_in);
     void createCalibrationSpectra();
+    void calcSpectra();
+    bpy::list getSpectra();
 };

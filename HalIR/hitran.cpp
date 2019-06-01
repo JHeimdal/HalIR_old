@@ -3,6 +3,7 @@
 #include <boost/filesystem.hpp>
 
 using namespace std;
+namespace bf = boost::filesystem;
 
 string Hitran::trims(const std::string &ss ) {
     string ans(ss);
@@ -11,7 +12,6 @@ string Hitran::trims(const std::string &ss ) {
 }
 Hitran::Hitran()
 {
-    namespace bf = boost::filesystem;
     bool createbin=true;
     char *par_path;
     char *dat_path;
@@ -56,10 +56,12 @@ Hitran::Hitran()
 	    continue;
     }
     in.close();
+    /*
     // Read in the HITRAN database
     bf::path p(par_path);
-    if (p.extension()==".bpar") {
-        readHitPar(p.c_str(),hitpar);
+    if (p.extension()==".bpards") {
+        // readHitPar(p.c_str(),hitpar);
+        cerr << "Should not be here!!\n";
     } else {
         in.open(par_path);
         char ctmp[16];
@@ -94,7 +96,9 @@ Hitran::Hitran()
             writeHitPar( np.c_str() );
             cerr << "Created binary hitpar\nPlease update the HITPAR environment variable\n" << "export HITPAR=/" << np.c_str() << endl;
         }
+
     }
+    */
 }
 molparm* Hitran::create_molparm(const int *molecules, const int &nmolec,const double &conc,const double &low,const double &high) {
     vector<HitranLine>::iterator down,up;
@@ -138,15 +142,62 @@ molparm* Hitran::create_molparm(const int *molecules, const int &nmolec,const do
     dtmp.clear();
     return result;
 }
+molparm* Hitran::create_molparm(const string &filename) {
+    vector<HitranLine> dtmp;
+    HitranHead head;
+    //size_t hls = sizeof(HitranLine);
+    bf::path p(filename);
+    if (p.extension()==".hpar") {
+        readHitPar(p.c_str(), dtmp, head);
+    }
+    molparm *result = new molparm;
+    cout << "dtmp size: " << dtmp.size() << endl;
+    initMolparm((unsigned)dtmp.size(),result);
+    unsigned cc=0;
+    for( auto hl : dtmp) {
+        //cout << result->molec_num << endl;
+        result->molec_num[cc] = hl.molec_num;
+        result->isotp_num[cc] = hl.isotp_num;
+        result->trans_mu[cc] = hl.trans_mu;
+        result->line_I[cc] = hl.line_I;
+        result->einstein_A[cc] = hl.einstein_A;
+        result->air_B[cc] = hl.air_B;
+        result->self_B[cc] = hl.self_B;
+        result->low_state_en[cc] = hl.low_state_en;
+        result->temp_air_B[cc] = hl.temp_air_B;
+        result->pressure_S[cc] = hl.pressure_S;
+        // result->err_code[cc] = hl.err_code    ;
+        // result->ref_code[cc] = hl.ref_code    ;
+        result->u_stat_w[cc] = hl.u_stat_w;
+        result->l_stat_w[cc] = hl.l_stat_w;
+        result->abundance[cc] = hl.abundance;
+        result->molecMass[cc] = hl.molecMass;
+        cc++;
+    }
+    result->nlines=cc;
+    result->nmolec=head.nisotp;
+    result->molecules = new int[result->nmolec];
+    memcpy(result->molecules,head.molecs,result->nmolec*sizeof(int));
+    memcpy(result->name,head.molec,6);
+    result->llim=head.roi_low;
+    result->hlim=head.roi_high;
+    dtmp.clear();
+    return result;
+}
 void Hitran::writeHitPar(const char *filename) {
     ofstream fout(filename, ios::binary);
     for( auto hl : hitpar)
         fout.write( (char*)&hl,sizeof(HitranLine));
     fout.close();
 }
-void Hitran::readHitPar(const char *filename, vector<HitranLine> &data) {
+void Hitran::readHitPar(const char *filename, vector<HitranLine> &data, HitranHead &head) {
     ifstream fin(filename, ios::binary);
     HitranLine thl;
+    fin.read((char*)&head, sizeof(HitranHead));
+
+    head.molecs = new int[head.nisotp];
+    fin.read((char*)head.molecs, sizeof(int)*head.nisotp);
+
     while( !fin.eof() ) {
         fin.read((char*)&thl,sizeof(HitranLine));
         data.push_back(thl);

@@ -5,14 +5,17 @@
 #include <string>
 #include <sstream>
 #include <map>
+#include <boost/filesystem.hpp>
 
 
 #include "hitran.hpp"
 // #include "../SpecSac/specsac.hpp"
+namespace bf = boost::filesystem;
 
 class HalIRSpec
 {
 private:
+
     template <typename T>
     void vprint(const std::vector<T> &vec) {
         for( T v : vec)
@@ -44,21 +47,31 @@ private:
     double F2K(double f_val) { return (f_val-32)*5/9+273.15; } // Converts Fahrenheit to Kelvin ( never put this in documentation )
     /* End of constants */
 
-    struct Comp {
-      std::string molec;
-      std::string isotop;
-      std::string hpar;
-      float amount;
-      Comp(std::string &m, std::string &isotp, const std::string &path, float &v)
-        : molec(m), isotop(isotp), hpar(path), amount(v) {}
-    };
+
 
     void check_file(std::string &filename);
 
 protected:
-    std::vector<molparm*> mparm;
     Hitran hitran;
-    std::vector<Comp> comp;
+    struct Comp {
+      std::string molec;
+      std::string isotop;
+      std::string hpar;
+      float vmr;
+      molparm *parm;
+      unsigned npts;
+      double ROI[2];
+      float *absCoeff;
+      Comp(std::string &m, std::string &isotp, const std::string &path, float &v)
+        : molec(m), isotop(isotp), hpar(path), vmr(v) {
+          bf::path p(hpar);
+          if (!bf::exists(p) && !bf::is_regular_file(p))
+            std::cerr << "Something is wrong no file: " << p.string() << std::endl;
+      }
+    };
+    std::vector<molparm*> mparm;
+    //Hitran hitran;
+    std::vector<Comp*> comp;
     std::vector<std::string> pfiles;
     std::string p_db;
     std::string pdir;

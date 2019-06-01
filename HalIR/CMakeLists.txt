@@ -10,8 +10,11 @@ if (OPENMP_FOUND)
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 endif()
 
+find_package(PythonInterp 3.5 REQUIRED)
+find_package(PythonLibs 3.5 REQUIRED)
+include_directories(${PYTHON_INCLUDE_DIRS})
 
-find_package(Boost COMPONENTS system filesystem REQUIRED)
+find_package(Boost COMPONENTS system filesystem python REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
 
 include_directories( ${ARMADILLO_INCLUDE_DIRS} )
@@ -20,6 +23,6 @@ set( SRCS hitran.cpp halirSpec.cpp halir.cpp Faddeeva.cpp )
 
 add_library(HalIR SHARED ${SRCS})
 
-target_link_libraries(HalIR ${ARMADILLO_LIBRARIES} ${OpenMP_CXX_FLAGS} ${Boost_LIBRARIES})
+target_link_libraries(HalIR ${ARMADILLO_LIBRARIES} ${OpenMP_CXX_FLAGS} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 
 install( TARGETS HalIR DESTINATION .mlib)

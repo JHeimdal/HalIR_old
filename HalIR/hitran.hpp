@@ -15,8 +15,8 @@ struct molparm {
     int nmolec;
     int nlines;
     double conc;
-    double llim;
-    double hlim;
+    float  llim;
+    float  hlim;
     int    *molecules;
     int    *molec_num;	 // Molecule Number
     int    *isotp_num;	 // Isotopologue Number
@@ -37,6 +37,8 @@ struct molparm {
     //char   **line_mix;	 // Flag for line mixing
     float  *u_stat_w;	 // Upper statistical weight
     float  *l_stat_w;	 // Lower statistical weight
+    float  *abundance; // Abundance of line
+    float  *molecMass; // Mass of line isotope
 };
 
 class Hitran
@@ -62,6 +64,8 @@ void initMolparm(unsigned size, molparm *mp) {
       //mp->line_mix = new char[size][2];
       mp->u_stat_w = new float[size];
       mp->l_stat_w = new float[size];
+      mp->abundance = new float[size];
+      mp->molecMass = new float[size];
 }
 inline std::string trims(const std::string &ss);
 struct HitranDat {
@@ -89,6 +93,15 @@ struct HitranDat {
     }
 } hitdat;
 
+struct HitranHead {
+  char molec[6];
+  char isoname[12];
+  int nisotp;
+  float roi_low;
+  float roi_high;
+  int *molecs;
+};
+
 struct HitranLine {
   int    molec_num;	 // Molecule Number
   int    isotp_num;	 // Isotopologue Number
@@ -109,6 +122,9 @@ struct HitranLine {
   char   line_mix[2];	 // Flag for line mixing
   float  u_stat_w;	 // Upper statistical weight
   float  l_stat_w;	 // Lower statistical weight
+  float  abundance; // abundace for Isotopologue
+  float  molecMass; // Mass for this Isotopologue
+
   inline bool operator<(const HitranLine &b) {
       return this->trans_mu < b.trans_mu;
   }
@@ -135,10 +151,11 @@ struct HitranLine {
 
 std::vector<HitranLine> hitpar;
 void writeHitPar(const char *filename);
-void readHitPar(const char *filename, std::vector<HitranLine> &data);
+void readHitPar(const char *filename, std::vector<HitranLine> &data, HitranHead &head);
 public:
     Hitran();
     molparm* create_molparm(const int *molecules, const int &nmolec,const double &conc,const double &low,const double &high);
+    molparm* create_molparm(const std::string &filename);
     void print(std::vector<HitranLine> &data) {
         for( auto hl : data)
             //printf("%2d%1d%12.6f%10.3E%10.3E%5f%5f%10f%4f%8f%15s%15s%15s%15s%6s%12s%1s%7f%7f\n",hl.molec_num,hl.isotp_num,hl.trans_mu,hl.line_I,hl.einstein_A,hl.air_B,hl.self_B,hl.low_state_en,hl.temp_air_B,hl.pressure_S,&hl.u_vib_quant,&hl.l_vib_quant,hl.u_loc_quant,hl.l_loc_quant,hl.err_code,hl.ref_code,hl.line_mix,hl.u_stat_w,hl.l_stat_w);

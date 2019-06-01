@@ -38,13 +38,13 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def onFitSpectra(self, projDict, sampleDict):
         # Open new tab and plot data when finised
-        self.fitTab = MyFitTab()
+        self.fitTab = MyFitTab(projDict, sampleDict)
         self.ui.tabWidget.addTab(self.fitTab,
                                  "Fit {} project".format(projDict['pname']))
         self.ui.tabWidget.setCurrentWidget(self.fitTab)
 
         # Start in new process
-        self.fitTab.runFit(projDict, sampleDict)
+        self.fitTab.runFit()
 
 
 if __name__ == '__main__':

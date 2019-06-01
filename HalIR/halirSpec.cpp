@@ -66,20 +66,14 @@ HalIRSpec::HalIRSpec(std::string &infile)
     for (pt::ptree::value_type &val : root.get_child("sampleDict.comp")) {
       string molec = val.second.get<string>("molec");
       string isotp = val.second.get<string>("isotop");
-      float tv = val.second.get<float>("amount");
+      float tv = val.second.get<float>("vmr");
       bf::path dir(pdir);
       bf::path file(molec+".hpar");
       bf::path full = dir / file;
-      comp.push_back(Comp(molec, isotp, full.string(), tv));
+      comp.push_back(new Comp(molec, isotp, full.string(), tv));
     }
-
-    /* Check for the hpar files */
-    for( auto m : comp) {
-      bf::path p(m.hpar);
-      if (!bf::exists(p) && !bf::is_regular_file(p))
-        cerr << "Something is wrong no file: " << p.string() << endl;
-    }
-    //hitran.save_molparm(mparm[0]);
+    for ( auto cmp : comp)
+      cmp->parm = hitran.create_molparm(cmp->hpar);
 }
 HalIRSpec::~HalIRSpec()
 {
