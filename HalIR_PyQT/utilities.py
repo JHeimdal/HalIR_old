@@ -67,11 +67,11 @@ def hitranDownload(projDict, sampleDict):
                         head = unpack(struct_header,
                                       headfil.read(calcsize(struct_header)))
                     # if (head[0].decode().strip() == comp['molec'])
-                    if ( head[0].decode().strip('\x00') == comp['molec'] and
-                         head[1].decode().strip('\x00') == comp['isotop'] and
-                         head[2] == len(molecToIsoNum[comp['molec']]) and
-                         head[3] == sampleDict['ROI'][0] and
-                         head[4] == sampleDict['ROI'][1]):
+                    if(head[0].decode().strip('\x00') == comp['molec'] and
+                       head[1].decode().strip('\x00') == comp['isotop'] and
+                       head[2] == len(molecToIsoNum[comp['molec']]) and
+                       head[3] == sampleDict['ROI'][0] and
+                       head[4] == sampleDict['ROI'][1]):
                         continue
 
                 if comp['isotop'] == 'Natural':
@@ -96,7 +96,6 @@ def hitranDownload(projDict, sampleDict):
                                comp['isotop'].encode(), len(molecs),
                                sampleDict['ROI'][0], sampleDict['ROI'][1], 0)
                     outf.write(bin)
-                    print('i'*len(molecs), *molecs)
                     bin = pack('i'*len(molecs), *molecs)
                     outf.write(bin)
                     for hl in line_data:

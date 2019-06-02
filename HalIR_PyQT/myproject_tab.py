@@ -57,10 +57,12 @@ class CompEntry(QtWidgets.QWidget):
         return ans
 
     def setCompVal(self, data):
+        _uconv = {'ppm': 1e6, 'ppb': 1e9, 'ppt': 1e12, 'mb': 1.01325e3}
         self.ui.molec_val.setCurrentText(data['molec'])
         self.setIso_val()
         self.ui.iso_val.setCurrentText(data['isotop'])
-        self.ui.amount_val.setText(str(data['vmr']))
+        self.ui.amount_val.setText("{:.1f}".format(
+            data['vmr']*_uconv[data['amountU']]))
         self.ui.amount_unit.setCurrentText(data['amountU'])
 
 
@@ -103,6 +105,9 @@ class MyProjectTab(QtWidgets.QWidget):
 
     def _collectVal(self):
         # Check if there are values
+        _unit_conv = {'ppm': 1e-6, 'ppb': 1e-9, 'ppt': 1e-12,
+                      'mb': 0.986923266716e-3, 'm': 1e2, 'cm': 1, 'km': 1e5,
+                      'K': 1, 'C': 1, 'atm': 1, 'bar': 0.986923266716}
         projectKey = ['pname', 'pdir', 'p_db', 'pcomments', 'pfiles']
         projectDict = dict(zip(projectKey, self.getProjectVal()))
         # Build sample dictonary
@@ -110,12 +115,23 @@ class MyProjectTab(QtWidgets.QWidget):
                      'ROI', 'res', 'apod', 'fov', 'ftype', 'bgfile']
         sampleDict = dict(zip(sampleKey, self.getSampleVal()))
 
+        # Change the units to HITRAN units
+        for v, u in zip(['temp', 'press', 'pathL'],
+                        ['tempU', 'pressU', 'pathLU']):
+            sampleDict[v] = _unit_conv[sampleDict[u]]*sampleDict[v]
         # Build components dictonaries
         compkey = ['molec', 'isotop', 'vmr', 'amountU']
         components = []
         for comp in self.components:
             if not comp.isHidden():
                 components.append(dict(zip(compkey, comp.getValues())))
+        # Calculate the vmr of each component
+        for comp in components:
+            tv = _unit_conv[comp['amountU']]*comp['vmr']
+            if comp['amountU'] in ['mb']:
+                tv = tv/sampleDict['press']
+            comp['vmr'] = tv
+
         sampleDict['comp'] = components
         return projectDict, sampleDict
 
@@ -123,12 +139,15 @@ class MyProjectTab(QtWidgets.QWidget):
         projDict, sampleDict = self._collectVal()
         data = {'projectDict': projDict, 'sampleDict': sampleDict}
         data_json = json.dumps(data)
-        with open("project_"+projDict['pname']+".json", "w") as ofile:
+        ftmp = projDict['pname']+".json"
+        fname = QtWidgets.QFileDialog.getSaveFileName(self, 'Save File', ftmp,
+                                                      'Project;(*.json)', self.cwd)
+        with open(fname[0], "w") as ofile:
             ofile.write(data_json)
 
     def loadProject(self):
-        fname = QtWidgets.QFileDialog.getOpenFileName(self, 'Open File',
-                                                      self.cwd)
+        fname = QtWidgets.QFileDialog.getOpenFileName(self, 'Open File', '',
+                                                      'Project;(*.json)', self.cwd)
         with open(fname[0], 'r') as infile:
             data = json.load(infile)
         projDict = data['projectDict']
@@ -137,11 +156,14 @@ class MyProjectTab(QtWidgets.QWidget):
         self.setSampleVal(sampleDict)
 
     def setSampleVal(self, data):
+        _uconv = {'ppm': 1e6, 'ppb': 1e9, 'ppt': 1e12,
+                  'mb': 1.01325e3, 'm': 1e-2, 'cm': 1, 'km': 1e-5,
+                  'K': 1, 'C': 1, 'atm': 1, 'bar': 1.01325}
         self.ui.temp_val.setText(str(data['temp']))
         self.ui.temp_unit.setCurrentText(data['tempU'])
-        self.ui.press_val.setText(str(data['press']))
+        self.ui.press_val.setText(str(data['press']*_uconv[data['pressU']]))
         self.ui.press_unit.setCurrentText(data['pressU'])
-        self.ui.pathL_val.setText(str(data['pathL']))
+        self.ui.pathL_val.setText(str(data['pathL']*_uconv[data['pathLU']]))
         self.ui.pathL_unit.setCurrentText(data['pathLU'])
         self.ui.roiLow_val.setText(str(data['ROI'][0]))
         self.ui.roiHigh_val.setText(str(data['ROI'][1]))

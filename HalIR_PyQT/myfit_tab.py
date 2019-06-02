@@ -19,7 +19,7 @@ def timeit(name):
 
 
 class _runHAPI_Fit(QThread):
-    done = pyqtSignal()
+    done = pyqtSignal(list)
 
     def __init__(self, projDict, sampleDict):
         super(QThread, self).__init__()
@@ -44,9 +44,7 @@ class _runHAPI_Fit(QThread):
             self.halir = HalIR(json.dumps(input))
             self.halir.calcSpectra()
             self.calcSpec = self.halir.getSpectra()
-            for s in self.calcSpec:
-                print(s['molec'])
-        self.done.emit()
+        self.done.emit(self.calcSpec)
 
 
 class MyFitTab(QtWidgets.QWidget):
@@ -63,9 +61,12 @@ class MyFitTab(QtWidgets.QWidget):
         # self.molecToIsoNum = self._getMolecToIsoNum()
         # self.runhp_Fit.done.connect(self.fitDone)
         # Do some setup for view window
+        self.ui.mPlot.invertX(True)
+        self.ui.rPlot.invertX(True)
         self.ui.rPlot.setXLink(self.ui.mPlot)
         self.specFiles = projDict['pfiles']
-        self._plot()
+        if self.specFiles:
+            self._plot()
 
     def _plot(self):
         """ plot files """
@@ -78,7 +79,8 @@ class MyFitTab(QtWidgets.QWidget):
         self.runHAPI_Fit.done.connect(self.fitDone)
         self.runHAPI_Fit.start()
 
-    def fitDone(self):
+    def fitDone(self, spec):
         # upate plot
-        td = SPC('CO.spc')
-        self.ui.rPlot.plot(td.xdata, td.ydata)
+        self.calcSpec = spec
+        for i, sp in enumerate(self.calcSpec):
+            self.ui.mPlot.plot(sp["mu"], sp["absCoeff"], pen=(i+1, 3))

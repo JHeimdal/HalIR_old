@@ -62,6 +62,7 @@ protected:
       unsigned npts;
       double ROI[2];
       float *absCoeff;
+      float *mu;
       Comp(std::string &m, std::string &isotp, const std::string &path, float &v)
         : molec(m), isotop(isotp), hpar(path), vmr(v) {
           bf::path p(hpar);

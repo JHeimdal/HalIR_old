@@ -151,7 +151,6 @@ molparm* Hitran::create_molparm(const string &filename) {
         readHitPar(p.c_str(), dtmp, head);
     }
     molparm *result = new molparm;
-    cout << "dtmp size: " << dtmp.size() << endl;
     initMolparm((unsigned)dtmp.size(),result);
     unsigned cc=0;
     for( auto hl : dtmp) {

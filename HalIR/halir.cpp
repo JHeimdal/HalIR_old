@@ -113,7 +113,7 @@ void HalIR::calcSpectra()
     }
     MM=arma::sqrt(MM);
     float tfac=sqrt( ( 2*Na*kbs*temp*ln2*1e3 ) );
-    q=cmp->vmr*1e-6;
+    q=cmp->vmr;
     //cerr << "vmr: " << q << " lines: " << msize << endl;
     v0=t_mu+p_S*press;
     alphaD=v0*tfac/(3e8*MM);
@@ -142,12 +142,19 @@ void HalIR::calcSpectra()
             //y[i]+=(top/bot)*m->line_I[mm]*gfunct(mu[i],v0[mm])*voigt((mu[i]-v0[mm])/alphaD[mm],yy[mm]);
             y[i]+=(sqrt_ln2/(sqrt_pi*alphaD[mm]))*(top/bot)*q*NL*pathL*298/temp*cmp->parm->line_I[mm]*(float)Faddeeva::w(std::complex<double>((double)sqrt_ln2*(mu[i]-v0[mm])/alphaD[mm],(double)yy[mm])).real();
     }
+    fvec split = regspace<fvec>(-10.,mu_step,10.);
+    //cerr << "mu_step: " << mu_step << " res: " << res << endl;
+    SINC sinc(res);
+    split.transform(sinc);
+    split=split/sum(split);
+    fvec tran = conv(y,split,"same");
+    fvec ret = arma::exp(-tran);
     cmp->absCoeff = new float[npts];
-    //cout << "mu: " << y.size() << " npts: " << npts << endl;
-    memcpy(cmp->absCoeff, y.memptr(),sizeof(float)*npts);
-    //string fname = cmp->molec + ".spc";
-    //writeSPC(fname, cmp->ROI, cmp->npts, cmp->absCoeff);
-    //delete [] temp;
+    cmp->mu = new float[npts];
+
+    memcpy(cmp->absCoeff, ret.memptr(),sizeof(float)*npts);
+    memcpy(cmp->mu, mu.memptr(),sizeof(float)*npts);
+
   }
 }
 
@@ -156,11 +163,14 @@ bpy::list HalIR::getSpectra()
   bpy::list ret;
   for( auto cmp : comp ) {
     bpy::dict spec;
-    bpy::list r1;
-    for(int i=0;i<cmp->npts;i++)
+    bpy::list r1, r2;
+    for(int i=0;i<cmp->npts;i++) {
       r1.append(cmp->absCoeff[i]);
+      r2.append(cmp->mu[i]);
+    }
     spec["molec"] = cmp->molec;
     spec["absCoeff"] = r1;
+    spec["mu"] = r2;
     ret.append(spec);
   }
   return ret;
