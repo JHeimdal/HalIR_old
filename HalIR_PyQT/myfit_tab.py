@@ -42,7 +42,10 @@ class _runHAPI_Fit(QThread):
         # Start a HalIR session
             input = {'projectDict': self.projDict, 'sampleDict': self.sampleDict}
             self.halir = HalIR(json.dumps(input))
-            self.halir.calcSpectra()
+            with timeit('calcSpectra'):
+                self.halir.calcSpectra()
+            with timeit('calcSpectra_cu'):
+                self.halir.calcSpectra_cu()
             self.calcSpec = self.halir.getSpectra()
         self.done.emit(self.calcSpec)
 

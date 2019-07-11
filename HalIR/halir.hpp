@@ -28,10 +28,13 @@ class HalIR : public HalIRSpec
 
     const double ln2=log(2);
     const double sqrt_ln2=sqrt(ln2);
+    const double sqrt_2=sqrt(2);
     const double pi=3.14159265358979;
     const double sqrt_pi=sqrt(pi);
+    const double sqrt_2pi=sqrt(2*pi);
     const double hc=1.98644521E-16; // erg*cm
     const double c_sq=8.987551787E20; // cm^2*s^-2
+    const double c=sqrt(8.987551787E20); // cm/s
     const double kb=1.3806503E-16; // erg/K
     const double atmmass=1.6605E-24; // g
     const double NL=2.686780524E+19; // Loschmid's number cm^-3
@@ -61,10 +64,10 @@ class HalIR : public HalIRSpec
         }
     };
     /* This is function for COMMENT */
-    inline double gfunct(double v,double vi) {
+    inline double gfunct(double vi,double v) {
         return (v*tanh(hc*v)/(2*kb*temp))/(vi*tanh((hc*vi)/(2*kb*temp)));
     }
-    inline float gfunct(float v,float vi) {
+    inline float gfunct(float vi,float v) {
         return (v*tanh(hc*v)/(2*kb*temp))/(vi*tanh((hc*vi)/(2*kb*temp)));
     }
     inline float qvr(float &line_I,int &molec_num,int &isotp_num,float &low_state_en,float &v0) {
@@ -87,5 +90,6 @@ class HalIR : public HalIRSpec
     HalIR(std::string parm_in);
     void createCalibrationSpectra();
     void calcSpectra();
+    void calcSpectra_cu();
     bpy::list getSpectra();
 };

@@ -95,9 +95,7 @@ void HalIR::createCalibrationSpectra()
 void HalIR::calcSpectra()
 {
   using namespace arma;
-  //int MNPTS=0;
-  //cout << "Run!: " << cmp.mparm->nlines << " lines\n";
-  int cc=0;
+
   for( auto cmp : comp ) {
     unsigned idx,npts;
     double xdata[2];
@@ -155,6 +153,15 @@ void HalIR::calcSpectra()
     memcpy(cmp->absCoeff, ret.memptr(),sizeof(float)*npts);
     memcpy(cmp->mu, mu.memptr(),sizeof(float)*npts);
 
+  }
+}
+
+extern "C" void calcSpec_cu(molparm *parm, int np);
+void HalIR::calcSpectra_cu()
+{
+  for( auto cmp : comp ) {
+    int npts = 1<<15;
+    calcSpec_cu(cmp->parm, npts);
   }
 }
 

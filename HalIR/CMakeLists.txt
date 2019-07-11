@@ -21,8 +21,9 @@ include_directories( ${ARMADILLO_INCLUDE_DIRS} )
 set( SRCS hitran.cpp halirSpec.cpp halir.cpp Faddeeva.cpp )
 #libraries( ${ARMSILLO_LIBRARIES} )
 
+add_library(calcSpec_cu SHARED calcSpectra.cu)
 add_library(HalIR SHARED ${SRCS})
 
-target_link_libraries(HalIR ${ARMADILLO_LIBRARIES} ${OpenMP_CXX_FLAGS} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
+target_link_libraries(HalIR ${ARMADILLO_LIBRARIES} ${OpenMP_CXX_FLAGS} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} calcSpec_cu)
 
-install( TARGETS HalIR DESTINATION .mlib)
+install( TARGETS HalIR calcSpec_cu DESTINATION .mlib)
